@@ -4,7 +4,7 @@
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: 杜二红 <1186969412@qq.com>
+// | Author: www
 // +----------------------------------------------------------------------
 // | Created by: 2015-10-11 00:00:00
 // +----------------------------------------------------------------------
@@ -24,7 +24,7 @@ class IndexController extends Controller {
 
     public function index()
     {
-      $this->redirect('/Auth/Index/login','',0,'');
+      $this->redirect('Auth/Index/login','',0,'');
     }
     //登录界面
 	public function login(){
@@ -34,7 +34,7 @@ class IndexController extends Controller {
     //登出界面
     public function logout(){
     	unset($_SESSION['user']);
-    	$this->redirect('/Auth/Index/login','',2, '注销成功');
+    	$this->redirect('Auth/Index/login','',2, '注销成功');
     }
 
     // 登录认证：登录判断，以及赋值+授权
@@ -84,13 +84,13 @@ class IndexController extends Controller {
              }
              else{
                 unset($_SESSION['user']);
-                $this->redirect('/Auth/Index/login','',3, '登录失败，该用户没有任何模块被授权,3s后跳转到登录界面');
+                $this->redirect('Auth/Index/login','',3, '登录失败，该用户没有任何模块被授权,3s后跳转到登录界面');
              }
 
 
          }
          else{
-            $this->redirect('/Auth/Index/login','',2, '亲，用户名或者密码错误,2s后跳转到登录界面');
+            $this->redirect('Auth/Index/login','',2, '亲，用户名或者密码错误,2s后跳转到登录界面');
          }
     }
 }

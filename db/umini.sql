@@ -4528,9 +4528,9 @@ CREATE TABLE `xq_posts` (
 --
 
 INSERT INTO `xq_posts` (`id`, `orderid`, `title`, `datetimes`, `sort_id`, `info`, `content`, `author`) VALUES
-(1111116, 0, '关于UminiCMF内容管理框架升级', '2017-05-04 00:00:00', NULL, '', '', ''),
-(1111117, 0, '2017 年你不能错过的 Java 类库', '2017-05-04 00:00:00', NULL, '', '', ''),
-(1111118, 0, '怎样快速建立一个公司网站？', '2017-05-04 00:00:00', NULL, '', '', '');
+(1111116, 0, '321捕鱼后台管理中心', '2017-05-04 00:00:00', NULL, '', '', ''),
+(1111117, 0, '321捕鱼后台管理中心', '2017-05-04 00:00:00', NULL, '', '', ''),
+(1111118, 0, '321捕鱼后台管理中心', '2017-05-04 00:00:00', NULL, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -4608,7 +4608,7 @@ CREATE TABLE `xq_site` (
 --
 
 INSERT INTO `xq_site` (`id`, `orderid`, `site_title`, `site_banquan`, `site_keywords`, `site_description`, `site_logo`, `site_qq`, `site_kefu`, `site_400`, `site_email`, `site_jishu`, `site_dizhi`, `site_beianhao`, `site_plug`) VALUES
-(1, 0, 'UminiCmf内容管理框架', 'UminiCMF', 'UminiCmf内容管理框架', 'UminiCmf内容管理框架', '/Public/Uploads/myupload/20161207/5847799c6ad03.png', NULL, '', '', '', 'UminiCMF', '', '', '');
+(1, 0, '321捕鱼后台管理中心', '321捕鱼', '321捕鱼后台管理中心', '321捕鱼后台管理中心', '/Public/Uploads/myupload/20161207/5847799c6ad03.png', NULL, '', '', '', 'UminiCMF', '', '', '');
 
 -- --------------------------------------------------------
 

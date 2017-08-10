@@ -4,7 +4,7 @@
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: 杜二红 <1186969412@qq.com>
+// | Author: www
 // +----------------------------------------------------------------------
 // | Created by: 2015-10-11 00:00:00
 // +----------------------------------------------------------------------
@@ -58,7 +58,7 @@ class SystemController extends Controller {
 
         // 这里做路径导航
         $path_nav="";
-        $path_nav='<li><a href="'.__ROOT__.'/System/Index/index">首页</a></li>';
+        $path_nav='<li><a href="'.__ROOT__.'/System/Index/index">系统首页</a></li>';
         if ($Think.MODULE_NAME) {
             $thisdd=get_menu(array('node_name'=>$Think.MODULE_NAME),'find');
             $path_nav=$path_nav.'<li><a href="'.__ROOT__.'/'.$Think.MODULE_NAME.'">'.$thisdd['title'].'</a></li>';
