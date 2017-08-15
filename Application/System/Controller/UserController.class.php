@@ -22,11 +22,13 @@ use Think\Controller;
 class UserController extends SystemController {
     // 授权首页：未定义
     public function index(){
+        file_put_contents('wmlog.txt', "user:".PHP_EOL, FILE_APPEND);
     	$this->show('user');
     }
 
     //授权列表
     public function user_auth_list(){
+        file_put_contents('wmlog.txt', "user lists:".PHP_EOL, FILE_APPEND);
         $this->lists();
     }
 
@@ -88,6 +90,7 @@ class UserController extends SystemController {
     //新增
     function user_add()
     {
+        file_put_contents('wmlog.txt', ":user_add".PHP_EOL, FILE_APPEND);
       if ($_POST) {
         $umap=array();
         $umap['username']=I('post.username');

@@ -20,7 +20,7 @@ class BackupController extends SystemController {
     }
 
     public function lists(){
-    	$this->show('对不起，该功能暂未开放，请升级系统到最新版本或者联系管理员，管理员联系电话:<i>18993068696</i>,或者返回<a href="http://localhost:8088/index.php?">首页</a>');
+    	$this->show('对不起，该功能暂未开放，请升级系统到最新版本或者联系管理员，管理员联系电话:<i>88888888</i>,或者返回<a href="http://localhost:8080/index.php?">首页</a>');
     }
 
 
