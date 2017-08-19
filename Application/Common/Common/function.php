@@ -100,6 +100,7 @@ function get_menu($map,$type='select'){
 
 }
 
+
 function get_node($map,$type='select'){
 	$Model_data=M('menu');
 	$data_list=$Model_data->where($map)->$type();
@@ -991,24 +992,24 @@ function get_model_name($model_name)
 }
 
 function DiffDate($date1, $date2) {
-  if (strtotime($date1) > strtotime($date2)) {
-    $ymd = $date2;
-    $date2 = $date1;
-    $date1 = $ymd;
-  }
-  list($y1, $m1, $d1) = explode('-', $date1);
-  list($y2, $m2, $d2) = explode('-', $date2);
-  $y = $m = $d = $_m = 0;
-  $math = ($y2 - $y1) * 12 + $m2 - $m1;
-  $y = round($math / 12);
-  $m = intval($math % 12);
-  $d = (mktime(0, 0, 0, $m2, $d2, $y2) - mktime(0, 0, 0, $m2, $d1, $y2)) / 86400;
-  if ($d < 0) {
-    $m -= 1;
-    $d += date('j', mktime(0, 0, 0, $m2, 0, $y2));
-  }
-  $m < 0 && $y -= 1;
-  return array($y, $m, $d);
+    if (strtotime($date1) > strtotime($date2)) {
+        $ymd = $date2;
+        $date2 = $date1;
+        $date1 = $ymd;
+    }
+    list($y1, $m1, $d1) = explode('-', $date1);
+    list($y2, $m2, $d2) = explode('-', $date2);
+    $y = $m = $d = $_m = 0;
+    $math = ($y2 - $y1) * 12 + $m2 - $m1;
+    $y = round($math / 12);
+    $m = intval($math % 12);
+    $d = (mktime(0, 0, 0, $m2, $d2, $y2) - mktime(0, 0, 0, $m2, $d1, $y2)) / 86400;
+    if ($d < 0) {
+        $m -= 1;
+        $d += date('j', mktime(0, 0, 0, $m2, 0, $y2));
+    }
+    $m < 0 && $y -= 1;
+    return array($y, $m, $d);
 }
 
 
@@ -1030,4 +1031,54 @@ function add_url_parameter($key, $value) {
 	$url=U($node,$up);
 	return $url;
 }
+
+function get_dbs(){
+	$dbs= C('DBS');
+    $db = get_db();
+    if( empty( $db )){
+        foreach($dbs as $key=>$value ){
+            set_db($key);
+            break;
+        }
+    }
+    return $dbs;
+}
+
+function set_db($key){
+    session("db",$key);
+}
+
+function get_db(){
+    return session("db");
+}
+function get_db_config(){
+    $dbs = get_dbs();
+    $db = get_db();
+    $dbf = $dbs[$db];
+    return $dbf;
+}
+function get_db_config_url(){
+    $dbs = get_dbs();
+    $db = get_db();
+    $dbf = $dbs[$db];
+    $dbf_url = $dbf["url"];
+    return $dbf_url;
+}
+
+function set_current_gameid($id){
+    session("gameid",$id);
+}
+
+function get_current_gameid(){
+    return session("gameid");
+}
+
+function set_current_userid($id){
+    session("userid",$id);
+}
+
+function get_current_userid(){
+    return session("userid");
+}
+
 ?>

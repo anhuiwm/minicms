@@ -94,9 +94,8 @@ class SystemController extends Controller {
         //节点所在的当前模型
         $this->THIS_MODEL=get_model($this->PUB_THISMENU['model']);
 
-
-
-
+        $this->dbs=get_dbs();
+        $this->db = get_db();
     }
 
     //获取用户节点，是否有继承节点，如果没有则跳转相应节点，如果有，则继承父类节点

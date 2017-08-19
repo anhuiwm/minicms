@@ -36,15 +36,45 @@
                             </if>
                         </foreach>
                     </if>
+                </ul>
+                <!--<ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        选择服务器:
+                        <select class="model_name">
+                            <foreach name="dbs" item="row" key="key">
+                                <option value={$key}>{$key}</option>
+                                <if condition="$key eq $db">
+                                    <option value={$key} selected="selected" >{$key}</option>
+                                    <else />
+                                    <option value={$key}>{$key}</option>
+                                </if>
+                            </foreach>
+                        </select>
+                    </li>
+                </ul>-->
+ 
+                <ul class="nav navbar-nav navbar-mid header-tools">
+                    <li><a href="#"></a></li>
+                </ul>
 
-
+                <ul class="nav navbar-nav navbar-mid header-tools">
+                    <li><a href="#">当前服:{$db}</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">选择服务器<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <foreach name="dbs" item="row" key="key">
+                                <li><a href="{:U('GmTool/Command/set_db',array('key'=>$key))}">{$key}</a></li>
+                            </foreach>
+                        </ul>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right header-tools">
-
-
-
                     <li><img src="__ROOT__/Public/default/Static/images/avatar2.jpg" class="portrait"></li>
+                    <!--<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">服务器:{$db}<span class="caret"></span></a>
+                    </li>-->
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$_SESSION['user']['username']} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -52,7 +82,6 @@
                             <li><a href="#">修改密码</a></li>
                         </ul>
                     </li>
-
                     <li><a href="{:U('Auth/Index/logout')}">注销系统</a></li>
                 </ul>
 

@@ -1,0 +1,17 @@
+﻿<extend name="Public@Public/base" />
+<block name="main_content">
+    <form method="post" action="{:U('GmTool/Command/add_cashpoint_result')}">
+        <br /><br />
+        <input type="text" class="form-control" placeholder="UserID" name="gameid">
+        <select class="form-control" name="shopid">
+            <option value="11" >少量点券60   </option>
+            <option value="12" >小堆点券300  </option>
+            <option value="13" >小袋点券980  </option>
+            <option value="14" >大袋点券1980 </option>
+            <option value="15" >满箱点券3280 </option>
+            <option value="16" >满柜点券6480 </option>	
+		</select>
+        <br />
+        <button class="btn btn-success <!--btn-block-->">提交</button>
+    </form>
+</block>

@@ -1,0 +1,62 @@
+﻿<extend name="Public@Public/base" />
+
+
+
+<block name="main_content">
+    <!--<div class="filter">
+        <div class="row frow">
+            <form action="" method="POST" name="form" class="myforms">
+                {$saerchForm}
+                <div class="col-md-1  col-xs-12 col-sm-1">
+                    <input type="submit" class="btn btn-info btn-sm btn-block" value="条件查询">
+                </div>
+            </form>
+        </div>
+    </div>-->
+    <!--<form id="form_list" name="form_list" action="" method="post">-->
+    <form method="post" class="myforms" action="{:U('GmTool/Command/base')}">
+        &nbsp 请输入:&nbsp
+        <input type="text" placeholder="GameID" name="gameid"> &nbsp
+        <button class="btn btn-info btn-sm ">提交</button>
+    </form>
+    <br />
+
+    <table class="table  datalist  table-hover">
+        <thead>
+            <tr>
+                <th style="font-size:12px;">
+                    <!--<input type="checkbox" class="select_all" name="select_all">-->
+                </th>
+                <if condition="$list_img_show neq false">
+                    <th>图片</th>
+                </if>
+                <foreach name="title_lists" item="row" key='key'>
+                    <th>
+                        {$key}
+                    </th>
+                    <th>
+                        {$row}
+                    </th>
+                </foreach>
+            </tr>
+        </thead>
+        <tbody>
+            <foreach name="list_data" item="row" key='key'>
+                <tr>
+                    <td style="font-size:12px;">
+                        <!--<input type="checkbox" name="select_id[]" value="{$row['id']}">-->
+                    </td>
+                    <foreach name="title_lists" item="row1" key='key1'>
+                        <th>
+                            {$key}
+                        </th>
+                        <th>
+                            {$row}
+                        </th>
+                    </foreach>
+                </tr>
+            </foreach>
+        </tbody>
+    </table>
+    <!--</form>-->
+</block>
