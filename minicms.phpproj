@@ -677,6 +677,7 @@
     <Content Include="Public\boot\js\jquery1.42.min.js" />
     <Content Include="Public\default\Block\sec_menu.html" />
     <Content Include="Public\default\GmTool\add_cashpoint.html" />
+    <Content Include="Public\default\GmTool\cdkey.html" />
     <Content Include="Public\default\GmTool\base.html" />
     <Content Include="Public\default\GmTool\index.html" />
     <Content Include="Public\default\Index\index.html" />

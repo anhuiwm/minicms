@@ -92,4 +92,17 @@ class CommandController extends GmToolController {
         }
        $this->display("GmTool:base");
     }
+
+    public function cdkey(){
+        $gameid = $_POST["gameid"];
+        if(IS_POST && !empty($gameid)){
+            $db_config = get_db_config();
+            $res =  M("accountinfo",null,$db_config)->query("call FishQueryUserInfoByGameID(".$gameid.")");
+            if($res){
+                $this->title_lists = array("属性"=>"值");
+                $this->list_data = $res[0];
+            }
+        }
+        $this->display("GmTool:cdkey");
+    }
 }
