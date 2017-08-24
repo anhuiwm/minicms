@@ -684,6 +684,7 @@
     <Content Include="Public\default\GmTool\mail.html" />
     <Content Include="Public\default\GmTool\reloadconfig.html" />
     <Content Include="Public\default\GmTool\selectdate.html" />
+    <Content Include="Public\default\GmTool\silent.html" />
     <Content Include="Public\default\GmTool\use_cdkey.html" />
     <Content Include="Public\default\GmTool\index.html" />
     <Content Include="Public\default\Index\index.html" />

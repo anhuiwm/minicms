@@ -267,7 +267,9 @@ class CommandController extends GmToolController {
             $data['type']= self::$GT_Mail;
             $data['id']=$RewardID;
             $data['num']=$RewardNum;
-            $data['content']=$Context;
+            file_put_contents('wmgmlog.txt', "con:".$Context.PHP_EOL, FILE_APPEND);
+            $data['content']=urlencode($Context);//urldecode($Context);
+            file_put_contents('wmgmlog.txt', "conen:".$data['content'].PHP_EOL, FILE_APPEND);
             $data['target']=$DestUserID;
             $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
             file_put_contents('wmgmlog.txt', "httpstr:".$httpstr.PHP_EOL, FILE_APPEND);

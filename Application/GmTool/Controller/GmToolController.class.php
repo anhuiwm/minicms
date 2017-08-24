@@ -130,6 +130,8 @@ class GmToolController extends Controller {
                 CURLOPT_SSL_VERIFYHOST => false,
                 CURLOPT_HTTPHEADER     => $header
         );
+        dump($params);
+        dump($params);
         /* 根据请求类型设置特定参数 */
         switch(strtoupper($method)){
             case 'GET':
