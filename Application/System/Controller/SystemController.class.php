@@ -32,7 +32,6 @@ namespace System\Controller;
 use Think\Controller;
 class SystemController extends Controller {
     public function _initialize(){
-        file_put_contents('wmlog.txt', "system initialize:".PHP_EOL, FILE_APPEND);
 
         header("Content-Type:text/html; charset=utf-8");
         // 用户登录权限认证
@@ -119,7 +118,6 @@ class SystemController extends Controller {
 
     // 过滤器，排序，自定义页面
     public function lists($map=false,$orderby=false,$self_page=false,$page_mun=10){
-        file_put_contents('wmlog.txt', "system lists:".PHP_EOL, FILE_APPEND);
         $model_data=D($this->THIS_MODEL['table_name']);
         if (!$orderby) {
             if (isset($this->THIS_MODEL['default_order']) and !empty($this->THIS_MODEL['default_order'])) {
@@ -241,7 +239,7 @@ class SystemController extends Controller {
         //save 自动生成。获取当前模型的save
         // 获取字段分组
 
-        file_put_contents('wmlog.txt', "modelid:".$this->THIS_MODEL['id']."modelname".$this->THIS_MODEL['model_name'].PHP_EOL, FILE_APPEND);
+        //file_put_contents('wmlog.txt', "modelid:".$this->THIS_MODEL['id']."modelname".$this->THIS_MODEL['model_name'].PHP_EOL, FILE_APPEND);
 
         $this->field_group_list=M('field_group')->where('model_id='.$this->THIS_MODEL['id'])->select();
 
@@ -414,7 +412,7 @@ class SystemController extends Controller {
     public function displayAuto(){
         $map['node_name']=$this->PUB_NODE;
         $actgo=get_menu($map,'find');
-        file_put_contents('wmlog.txt', "displayAuto:".$actgo['template'].PHP_EOL, FILE_APPEND);
+        //file_put_contents('wmlog.txt', "displayAuto:".$actgo['template'].PHP_EOL, FILE_APPEND);
         $this->display("System:".$actgo['template']);
     }
 

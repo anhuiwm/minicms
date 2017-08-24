@@ -651,7 +651,6 @@
     <Content Include="Application\Runtime\Logs\System\17_08_10.log" />
     <Content Include="Application\Site\Common\index.html" />
     <Content Include="Application\Site\Controller\index.html" />
-    <Content Include="Application\Site\index %282%29.html" />
     <Content Include="Application\Site\index.html" />
     <Content Include="Application\Site\Model\index.html" />
     <Content Include="Application\System\Common\index.html" />
@@ -677,8 +676,15 @@
     <Content Include="Public\boot\js\jquery1.42.min.js" />
     <Content Include="Public\default\Block\sec_menu.html" />
     <Content Include="Public\default\GmTool\add_cashpoint.html" />
+    <Content Include="Public\default\GmTool\broadcast.html" />
     <Content Include="Public\default\GmTool\cdkey.html" />
     <Content Include="Public\default\GmTool\base.html" />
+    <Content Include="Public\default\GmTool\handleentity.html" />
+    <Content Include="Public\default\GmTool\kick.html" />
+    <Content Include="Public\default\GmTool\mail.html" />
+    <Content Include="Public\default\GmTool\reloadconfig.html" />
+    <Content Include="Public\default\GmTool\selectdate.html" />
+    <Content Include="Public\default\GmTool\use_cdkey.html" />
     <Content Include="Public\default\GmTool\index.html" />
     <Content Include="Public\default\Index\index.html" />
     <Content Include="Public\default\Modal\project_cycle_modal.html" />

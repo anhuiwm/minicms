@@ -31,6 +31,15 @@
 namespace GmTool\Controller;
 use Think\Controller;
 class GmToolController extends Controller {
+
+    public static $GT_Charge = 1;
+	public static $GT_Mail = 2;
+	public static $GT_SendBroad = 3;
+	public static $GT_Kick = 4;
+	public static $GT_ReloadConfig = 5;
+	public static $GT_HandleEntityItem = 6;
+    public static $GT_Silent = 7;
+
     public function _initialize(){
         header("Content-Type:text/html; charset=utf-8");
         // 用户登录权限认证
@@ -125,6 +134,7 @@ class GmToolController extends Controller {
         switch(strtoupper($method)){
             case 'GET':
                 $opts[CURLOPT_URL] = $url . '?' . http_build_query($params);
+                file_put_contents('wmgmlog.txt', "Getstr:".$opts[CURLOPT_URL].PHP_EOL, FILE_APPEND);
                 break;
             case 'POST':
                 //判断是否传输文件
