@@ -57,7 +57,7 @@ return array(
             'DB_HOST'=>'106.15.198.179',
             'DB_NAME'=>'fishgame',
             'DB_USER'=>'root',
-            'DB_PWD'=>'!@#dmq1987',
+            'DB_PWD'=>'!@#dmq1987.',
             'DB_PORT'=>'3306',
             'url'=> "http://106.15.198.179:2680/gm_command_cl.clkj",
             ),

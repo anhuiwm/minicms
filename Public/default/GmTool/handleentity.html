@@ -1,0 +1,9 @@
+﻿<extend name="Public@Public/base" />
+<block name="main_content">
+    <form method="post" action="{:U('GmTool/Command/mail')}">
+        <input type="text" class="form-control" placeholder="订单ID" name="RewardID">
+        <input type="text" class="form-control" placeholder="快递单号" name="Context">
+        <br />
+        <button class="btn btn-success <!--btn-block-->">提交</button>
+    </form>
+</block>

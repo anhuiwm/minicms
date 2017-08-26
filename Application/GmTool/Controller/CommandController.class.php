@@ -64,7 +64,7 @@ class CommandController extends GmToolController {
          }
          $shopid=I('post.shopid');
          $arr_db_url = get_db_config_url();
-         $data['type']=self::$Gm_Charge;
+         $data['type']=self::$GT_Charge;
          $data['id']=$gameid;
          $data['num']=$shopid;
          $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
@@ -268,8 +268,7 @@ class CommandController extends GmToolController {
             $data['id']=$RewardID;
             $data['num']=$RewardNum;
             file_put_contents('wmgmlog.txt', "con:".$Context.PHP_EOL, FILE_APPEND);
-            $data['content']=urlencode($Context);//urldecode($Context);
-            file_put_contents('wmgmlog.txt', "conen:".$data['content'].PHP_EOL, FILE_APPEND);
+            $data['content']=$Context;// urlencode($Context);
             $data['target']=$DestUserID;
             $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
             file_put_contents('wmgmlog.txt', "httpstr:".$httpstr.PHP_EOL, FILE_APPEND);
@@ -289,6 +288,8 @@ class CommandController extends GmToolController {
 
     public function broadcast(){
         if(IS_POST){
+            dump($_POST);
+            dump($_POST);
             $RewardNum=I('post.RewardNum');
             $Context = I('post.Context');
             if(empty($RewardNum)||empty($Context))

@@ -1,0 +1,68 @@
+﻿<extend name="Public@Public/base" />
+<block name="main_content">
+    <form method="post" class="myforms" action="{:U('GmTool/Command/use_cdkey')}">
+        &nbsp
+        <input type="text" size="8" placeholder="cdkey" name="cdkey"> &nbsp或&nbsp
+        <input type="text" size="8" placeholder="UserID" name="userid"> &nbsp
+        <button class="btn btn-info btn-sm ">使用查询</button>
+    </form>
+<table class="table  datalist  table-hover">
+  <thead>
+    <tr>
+      <foreach name="title_lists" item="row">
+        <th>
+          {$row}
+        </th>
+      </foreach>
+      <th class="tright pad-r21" scope="row">
+          <div class="btn-group">
+          </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <foreach name="list_data" item="row" key='key'>
+    <tr>
+      <foreach name="title_lists" item="row1" key='key1'>
+        <td>
+         {$row[$row1]}
+        </td>
+      </foreach>
+    </tr>
+    </foreach>
+  </tbody>
+    <thead>
+        <tr>
+            <foreach name="title_lists" item="row">
+                <th>
+                    {$row}
+                </th>
+            </foreach>
+            <th class="tright pad-r21" scope="row">
+                <div class="btn-group">
+                </div>
+            </th>
+        </tr>
+    </thead>
+  </table>
+  </form>
+  <form action="" method="GET">
+  <div class="page">{$page}&nbsp;&nbsp;
+  <span>跳转至&nbsp;<input type="text" name="p" value="{$_GET['p']}"  style="padding:4px 6px;border:1px solid #ccc;border-radius: 4px;width: 50px;">&nbsp;页&nbsp;</span><input type="submit"  class="btn btn-info btn-sm" value="确认">
+  </div>
+  </form>
+
+    <script type="text/javascript">
+  $(".select_all").click(
+    function(){
+      if(this.checked){
+        $("input[name='select_id[]']").each(function(){this.checked=true;});
+      }else{
+        $("input[name='select_id[]']").each(function(){this.checked=false;});
+      }
+    }
+  );
+    </script>
+
+
+</block>

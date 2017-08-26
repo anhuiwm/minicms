@@ -1,0 +1,112 @@
+﻿<extend name="Public@Public/base" />
+<block name="main_content">
+    <div class="form-group">
+        <form method="post" class="myforms" action="{:U('GmTool/Command/add_cdkey')}">
+            </br> 请输入:</br>
+            <input type="text" class="form-control" placeholder="数量" name="count">
+            <input type="text" class="form-control" placeholder="礼包ID" name="gift">
+            <input type="text" class="form-control" placeholder="礼包名称" name="name">
+            <input type="text" class="form-control" placeholder="平台名称" name="platform">
+            <select class="form-control" placeholder="是否公用" name="ispublic">
+                <option value="0" selected ="selected">非公用</option>
+                <option value="1">公用</option>
+            </select>
+            <input type="text" class="form-control" name="starttime" id="countTimestart" onfocus="selecttime(1)" placeholder="开始日期" class="input" readonly>
+            <input type="text" class="form-control" name="endtime" id="countTimeend" onfocus="selecttime(2)" placeholder="结束日期" class="input" readonly>
+            <button class="btn btn-info btn-sm ">添加</button>
+        </form>
+    </div>
+    <br />
+
+    <!--<form method="post" class="myforms" action="{:U('GmTool/Command/cdkey')}">
+        &nbsp
+        <input type="text" size="8" placeholder="cdkey" name="cdkey"> &nbsp或&nbsp
+        <input type="text" size="8" placeholder="UserID" name="userid"> &nbsp
+        <button class="btn btn-info btn-sm ">使用查询</button>
+    </form>-->
+
+
+    <form method="post" class="myforms" action="{:U('GmTool/Command/cdkey')}">
+        &nbsp 
+        <!--<input type="text" size="8" placeholder="cdkey" name="cdkey"> &nbsp或&nbsp-->
+        <!--<input type="text" size="8" placeholder="UserID" name="userid"> &nbsp或&nbsp-->
+        <input type="text" size="8" placeholder="礼包ID" name="rewardid"> &nbsp或&nbsp
+        <input type="text" size="8" placeholder="平台" name="platform"> &nbsp或&nbsp
+        <select placeholder="是否公用" name="ispublic">
+            <option value="0" selected="selected">非公用</option>
+            <option value="1">公用</option>
+        </select>
+        <button name="query"  onclick="query()" class="btn btn-info btn-sm ">查询</button>
+        <button name="download"  onclick="download()" class="btn btn-info btn-sm ">下载</button>
+    </form>
+    <script type="text/javascript">
+        function query()
+        {
+            document.form.action = "{:U('GmTool/Command/cdkey')}";
+        }
+        function download()
+        {
+            document.form.action = "{:U('GmTool/Command/downcdkey')}";
+        }
+    </script>
+
+<table class="table  datalist  table-hover">
+  <thead>
+    <tr>
+      <foreach name="title_lists" item="row">
+        <th>
+          {$row}
+        </th>
+      </foreach>
+      <th class="tright pad-r21" scope="row">
+          <div class="btn-group">
+          </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <foreach name="list_data" item="row" key='key'>
+    <tr>
+      <foreach name="title_lists" item="row1" key='key1'>
+        <td>
+         {$row[$row1]}
+        </td>
+      </foreach>
+    </tr>
+    </foreach>
+  </tbody>
+    <thead>
+        <tr>
+            <foreach name="title_lists" item="row">
+                <th>
+                    {$row}
+                </th>
+            </foreach>
+            <th class="tright pad-r21" scope="row">
+                <div class="btn-group">
+                </div>
+            </th>
+        </tr>
+    </thead>
+  </table>
+  </form>
+  <form action="" method="GET">
+  <div class="page">{$page}&nbsp;&nbsp;
+  <span>跳转至&nbsp;<input type="text" name="p" value="{$_GET['p']}"  style="padding:4px 6px;border:1px solid #ccc;border-radius: 4px;width: 50px;">&nbsp;页&nbsp;</span><input type="submit"  class="btn btn-info btn-sm" value="确认">
+  </div>
+  </form>
+
+    <script type="text/javascript">
+  $(".select_all").click(
+    function(){
+      if(this.checked){
+        $("input[name='select_id[]']").each(function(){this.checked=true;});
+      }else{
+        $("input[name='select_id[]']").each(function(){this.checked=false;});
+      }
+    }
+  );
+    </script>
+
+
+</block>
