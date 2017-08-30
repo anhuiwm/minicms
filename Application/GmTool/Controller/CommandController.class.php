@@ -70,11 +70,11 @@ class CommandController extends GmToolController {
          $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
          if($httpstr == "SUCCESS")
          {
-             $this->redirect('GmTool:add_cashpoint','',5, '亲，发送命令成功!稍后请查询!!');
+             $this->redirect('GmTool:add_cashpoint','',3, '亲，发送命令成功!稍后请查询!!');
          }
          else
          {
-             $this->redirect('GmTool:add_cashpoint','',5, '亲，充值失败!!!');
+             $this->redirect('GmTool:add_cashpoint','',3, '亲，充值失败!!!');
          }
     }
 
