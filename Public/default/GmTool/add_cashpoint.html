@@ -1,7 +1,7 @@
 ﻿<extend name="Public@Public/base" />
 <block name="main_content">
     <form method="post" action="{:U('GmTool/Command/add_cashpoint_result')}">
-        <input type="text" class="form-control" placeholder="UserID" name="gameid">
+        <input type="text" class="form-control" value="{$curuser}" placeholder="UserID" name="gameid">
         <select class="form-control" name="shopid">
             <option value="11" >少量点券60   </option>
             <option value="12" >小堆点券300  </option>
@@ -12,6 +12,11 @@
             <option value="41">购买月卡</option>
             <option value="51">一元豪礼活动用</option>
 		</select>
+        <select class="form-control" name="count">
+            <option value="1">1次</option>
+            <option value="10">10次</option>
+            <option value="100">100次</option>
+        </select>
         <br />
         <button class="btn btn-success <!--btn-block-->">提交</button>
     </form>

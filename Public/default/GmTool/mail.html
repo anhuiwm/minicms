@@ -3,7 +3,7 @@
     <form method="post" action="{:U('GmTool/Command/mail')}">
         <input type="text" class="form-control" placeholder="RewardID" name="RewardID">
         <input type="text" class="form-control" placeholder="RewardNum" name="RewardNum">
-        <input type="text" class="form-control" placeholder="DestUserID" name="DestUserID">
+        <input type="text" class="form-control" value="{$curuser}" placeholder="DestUserID" name="DestUserID">
         <input type="text" class="form-control" placeholder="内容" name="Context">
         <br />
         <button class="btn btn-success <!--btn-block-->">提交</button>

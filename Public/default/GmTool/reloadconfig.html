@@ -1,12 +1,47 @@
 ﻿<extend name="Public@Public/base" />
 <block name="main_content">
-    <form method="post" action="{:U('GmTool/Command/mail')}">
+    <style>
+        /* layout.css Style */
+        .upload-drop-zone {
+            height: 200px;
+            border-width: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* skin.css Style*/
+        .upload-drop-zone {
+            color: #ccc;
+            border-style: dashed;
+            border-color: #ccc;
+            line-height: 200px;
+            text-align: center;
+        }
+
+            .upload-drop-zone.drop {
+                color: #222;
+                border-color: #222;
+            }
+    </style>
+
+
+    <form method="post" action="{:U('GmTool/Command/reloadconfig')}">
         <!--<input type="text" class="form-control" placeholder="RewardID" name="RewardID">
         <input type="text" class="form-control" placeholder="RewardNum" name="RewardNum">
         <input type="text" class="form-control" placeholder="DestUserID" name="DestUserID">
         <input type="text" class="form-control" placeholder="Context" name="Context">-->
-        请慎重
+        &nbsp &nbsp 请慎重!
         <br />
-        <button class="btn btn-success <!--btn-block-->">执行</button>
+        <button class="btn btn-success <!--btn-block-->">重新读取</button>
     </form>
-</block>
+
+    <input id="lefile" type="file" style="display:none">
+    <div class="input-append">
+        <input id="photoCover" class="input-large" type="text" style="height:30px;">
+        <a class="btn" onclick="$('input[id=lefile]').click();">Browse</a>
+    </div>
+
+    <script type="text/javascript">
+
+$('input[id=lefile]').change(function() {
+$('#photoCover').val($(this).val());
+});

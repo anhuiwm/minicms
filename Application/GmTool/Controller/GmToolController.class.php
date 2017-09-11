@@ -130,8 +130,8 @@ class GmToolController extends Controller {
                 CURLOPT_SSL_VERIFYHOST => false,
                 CURLOPT_HTTPHEADER     => $header
         );
-        dump($params);
-        dump($params);
+        //dump($params);
+        //dump($params);
         /* 根据请求类型设置特定参数 */
         switch(strtoupper($method)){
             case 'GET':
@@ -146,7 +146,7 @@ class GmToolController extends Controller {
                 $opts[CURLOPT_POSTFIELDS] = $params;
                 break;
             default:
-                dump($error);
+                //dump($error);
             // throw new Exception('不支持的请求方式！');
         }
         /* 初始化并执行curl请求 */
@@ -156,7 +156,7 @@ class GmToolController extends Controller {
         $error = curl_error($ch);
         curl_close($ch);
         if($error) {
-            dump($error);
+            //dump($error);
             //throw new Exception('请求发生错误：' . $error);
         }
         return  $data;

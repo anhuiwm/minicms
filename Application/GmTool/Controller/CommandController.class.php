@@ -32,6 +32,10 @@ namespace GmTool\Controller;
 use Think\Controller;
 class CommandController extends GmToolController {
     public function add_cashpoint(){
+        $curuserid = get_current_userid();
+        if(isset($curuserid)){
+            $this->curuser = $curuserid;
+        }
         $this->display('GmTool:add_cashpoint');
     }
 
@@ -67,15 +71,20 @@ class CommandController extends GmToolController {
          $data['type']=self::$GT_Charge;
          $data['id']=$gameid;
          $data['num']=$shopid;
-         $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
-         if($httpstr == "SUCCESS")
-         {
-             $this->redirect('GmTool:add_cashpoint','',3, '亲，发送命令成功!稍后请查询!!');
+
+         $count = I('post.count');
+         for($i = 0; $i < $count;$i++){
+             $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
+             if($httpstr == "SUCCESS")
+             {
+                 //$this->redirect('GmTool:add_cashpoint','',3, '亲，发送命令成功!稍后请查询!!');
+             }
+             else
+             {
+                 $this->redirect('GmTool:add_cashpoint','',3, '亲，充值失败!!!');
+             }
          }
-         else
-         {
-             $this->redirect('GmTool:add_cashpoint','',3, '亲，充值失败!!!');
-         }
+         $this->redirect('GmTool:add_cashpoint','',3, '亲，发送命令成功!稍后请查询!!');
     }
 
     public function base(){
@@ -92,8 +101,14 @@ class CommandController extends GmToolController {
            if($res){
                $this->title_lists = array("属性"=>"值");
                $this->list_data = $res[0];
+
+               set_current_userid($res[0]["userid"]);
            }
         }
+       $curuserid = get_current_userid();
+       if(isset($curuserid)){
+           $this->curuser = $curuserid;
+       }
        $this->display("GmTool:base");
     }
 
@@ -229,7 +244,7 @@ class CommandController extends GmToolController {
             $platform  = $_POST["platform"] ;
             if( empty($count) || empty($name)|| empty($gift)|| empty($starttime) || empty($validdate) || empty($platform) || !isset($public) )
             {
-                $this->redirect('GmTool:cdkey','',3, '亲，参数为空!!!');
+                $this->redirect('GmTool:cdkey','',1, '亲，参数为空!!!');
             }
 
             //if(!($count) || !is_int($gift))
@@ -243,10 +258,10 @@ class CommandController extends GmToolController {
             $res =  M("cdkey",null,$db_config)->execute($sql);
             //dump($res);
             if($res){
-               return   $this->redirect('GmTool:cdkey','',3, '亲，添加成功!');
+               return   $this->redirect('GmTool:cdkey','',1, '亲，添加成功!');
             }
         }
-        $this->redirect('GmTool:cdkey','',3, '亲，添加失败!');
+        $this->redirect('GmTool:cdkey','',1, '亲，添加失败!');
     }
 
     public function mail(){
@@ -282,6 +297,10 @@ class CommandController extends GmToolController {
             }
         }
         else{
+            $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
             $this->display('GmTool:mail');
         }
     }
@@ -323,15 +342,15 @@ class CommandController extends GmToolController {
         if(IS_POST){
             $RewardNum=I('post.RewardNum');
             $DestUserID = I('post.DestUserID');
-            $Context = I('post.Context');
+            //$Context = I('post.Context');
             if(empty($RewardNum)||empty($DestUserID))
             {
                 $this->redirect('GmTool:kick','',3, '亲，参数为空!!!');
             }
-            if(empty($Context))
-            {
-                $Context = "System Send!";
-            }
+            //if(empty($Context))
+            //{
+            //    $Context = "System Send!";
+            //}
             $arr_db_url = get_db_config_url();
             $data['type']= self::$GT_Kick;
             $data['id']=0;
@@ -350,6 +369,10 @@ class CommandController extends GmToolController {
             }
         }
         else{
+            $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
             $this->display('GmTool:kick');
         }
     }

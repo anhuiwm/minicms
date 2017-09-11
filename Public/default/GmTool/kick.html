@@ -1,7 +1,7 @@
 ﻿<extend name="Public@Public/base" />
 <block name="main_content">
-    <form method="post" action="{:U('GmTool/Command/mail')}">
-        <input type="text" class="form-control" placeholder="DestUserID" name="DestUserID">
+    <form method="post" action="{:U('GmTool/Command/kick')}">
+        <input type="text" class="form-control" value="{$curuser}" placeholder="DestUserID" name="DestUserID">
         <input type="text" class="form-control" placeholder="分钟数" name="RewardNum">
         <br />
         <button class="btn btn-success <!--btn-block-->">提交</button>
