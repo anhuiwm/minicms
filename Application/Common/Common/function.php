@@ -1057,6 +1057,15 @@ function get_db_config(){
     $dbf = $dbs[$db];
     return $dbf;
 }
+
+function get_logdb_config(){
+    $dbs = get_dbs();
+    $db = get_db();
+    $dbf = $dbs[$db];
+    $dbf['DB_NAME'] = "fishlog";
+    return $dbf;
+}
+
 function get_db_config_url(){
     $dbs = get_dbs();
     $db = get_db();

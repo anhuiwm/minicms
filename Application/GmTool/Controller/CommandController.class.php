@@ -31,6 +31,18 @@
 namespace GmTool\Controller;
 use Think\Controller;
 class CommandController extends GmToolController {
+
+    public function online(){
+     $this->count = '未查询';
+       if(IS_POST){
+           $db_config = get_db_config();
+           $res = null;
+           $res =  M("accountinfo",null,$db_config)->query("select count(*) as count from accountinfo where IsOnline=1 and IsRobot!=1;");
+           $this->count = $res[0]['count'];
+        }
+       $this->display("GmTool:online");
+    }
+
     public function add_cashpoint(){
         $curuserid = get_current_userid();
         if(isset($curuserid)){
@@ -57,7 +69,7 @@ class CommandController extends GmToolController {
 
         //$arr_db_url = get_db_config_url();//$arr_db["url"];
         //dump($arr_db_url);
-        $this->display('GmTool:Index');
+        $this->display('GmTool:index');
     }
 
     public function add_cashpoint_result(){
@@ -110,6 +122,26 @@ class CommandController extends GmToolController {
            $this->curuser = $curuserid;
        }
        $this->display("GmTool:base");
+    }
+
+   public function stock(){
+           $db_config = get_logdb_config();
+
+           $res =  M("fishstocklog",null,$db_config)->query("select * from fishstocklog");
+
+           if($res){
+              
+               $arr_score = array(0,0,0,0);
+               foreach($res as $key=>$value){
+                   $arr_score[$value["tabletype"]] += $value["stockscore"];
+                }
+  
+                $this->detail_title_lists=array("服务器ID","房间类型","StockScore","LogTime");
+                $this->title_lists = array("房间类型","房间类型总库存");
+                $this->detail_list_data = $res; 
+                $this->list_data = $arr_score;
+           }
+       $this->display("GmTool:stock");
     }
 
     public function cdkey(){

@@ -682,6 +682,7 @@
     <Content Include="Public\default\GmTool\handleentity.html" />
     <Content Include="Public\default\GmTool\kick.html" />
     <Content Include="Public\default\GmTool\mail.html" />
+    <Content Include="Public\default\GmTool\online.html" />
     <Content Include="Public\default\GmTool\reloadconfig.html" />
     <Content Include="Public\default\GmTool\selectdate.html" />
     <Content Include="Public\default\GmTool\silent.html" />
@@ -1549,6 +1550,5 @@
     <Content Include="ThinkPHP\Tpl\dispatch_jump.tpl" />
     <Content Include="ThinkPHP\Tpl\page_trace.tpl" />
     <Content Include="ThinkPHP\Tpl\think_exception.tpl" />
-    <Content Include="核心版本库.txt" />
   </ItemGroup>
 </Project>
