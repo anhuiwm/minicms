@@ -20,9 +20,11 @@
     <Compile Include="Application\Auth\Controller\IndexController.class.php" />
     <Compile Include="Application\Common\Common\function.php" />
     <Compile Include="Application\Common\Conf\config.php" />
-    <Compile Include="Application\Common\Conf\config_waiwang.php" />
+    <Compile Include="Application\Common\Conf\config_neiwang.php" />
     <Compile Include="Application\Common\Conf\data.php" />
     <Compile Include="Application\Common\Conf\db.php" />
+    <Compile Include="Application\Common\Conf\waiwang\config.php" />
+    <Compile Include="Application\Common\Conf\waiwang\config_waiwang.php" />
     <Compile Include="Application\GmTool\Conf\config.php" />
     <Compile Include="Application\GmTool\Conf\crt.php" />
     <Compile Include="Application\GmTool\Controller\CommandController.class.php" />
@@ -392,6 +394,7 @@
     <Folder Include="Application\Common\" />
     <Folder Include="Application\Common\Common\" />
     <Folder Include="Application\Common\Conf\" />
+    <Folder Include="Application\Common\Conf\waiwang\" />
     <Folder Include="Application\GmTool\" />
     <Folder Include="Application\GmTool\Common\" />
     <Folder Include="Application\GmTool\Conf\" />
@@ -686,6 +689,7 @@
     <Content Include="Public\default\GmTool\reloadconfig.html" />
     <Content Include="Public\default\GmTool\selectdate.html" />
     <Content Include="Public\default\GmTool\silent.html" />
+    <Content Include="Public\default\GmTool\stock.html" />
     <Content Include="Public\default\GmTool\use_cdkey.html" />
     <Content Include="Public\default\GmTool\index.html" />
     <Content Include="Public\default\Index\index.html" />

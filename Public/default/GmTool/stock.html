@@ -1,0 +1,54 @@
+﻿<extend name="Public@Public/base" />
+
+<block name="main_content">
+    <table class="table  datalist  table-hover">
+        <br />总计:
+        <thead>
+            <tr>
+                <foreach name="title_lists" item="row" key='key'>
+                    <th>
+                        {$row}
+                    </th>
+                </foreach>
+            </tr>
+        </thead>
+        <tbody>
+            <foreach name="list_data" item="row" key='key'>
+                <tr>
+                    <th>
+                        {$key}
+                    </th>
+                    <th>
+                        {$row}
+                    </th>
+                </tr>
+            </foreach>
+        </tbody>
+    </table>
+
+    <table class="table  datalist  table-hover">
+
+        <br />详细:
+        <thead>
+            <tr>
+                <foreach name="detail_title_lists" item="row" key='key'>
+                    <th>
+                        {$row}
+                    </th>
+                </foreach>
+            </tr>
+        </thead>
+        <tbody>
+            <foreach name="detail_list_data" item="row" key='key'>
+                <tr>
+                    <foreach name="row" item="detailrow" key='key'>
+                        <th>
+                            {$detailrow}
+                        </th>
+                    </foreach>
+                </tr>
+            </foreach>
+        </tbody>
+    </table>
+    <!--</form>-->
+</block>
