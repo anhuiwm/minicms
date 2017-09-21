@@ -683,9 +683,11 @@
     <Content Include="Public\default\GmTool\cdkey.html" />
     <Content Include="Public\default\GmTool\base.html" />
     <Content Include="Public\default\GmTool\handleentity.html" />
+    <Content Include="Public\default\GmTool\item.html" />
     <Content Include="Public\default\GmTool\kick.html" />
     <Content Include="Public\default\GmTool\mail.html" />
     <Content Include="Public\default\GmTool\online.html" />
+    <Content Include="Public\default\GmTool\chargelog.html" />
     <Content Include="Public\default\GmTool\reloadconfig.html" />
     <Content Include="Public\default\GmTool\selectdate.html" />
     <Content Include="Public\default\GmTool\silent.html" />
