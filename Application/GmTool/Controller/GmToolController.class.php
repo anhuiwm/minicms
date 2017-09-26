@@ -38,8 +38,10 @@ class GmToolController extends Controller {
 	public static $GT_Kick = 4;
 	public static $GT_ReloadConfig = 5;
 	public static $GT_HandleEntityItem = 6;
-    public static $GT_Silent = 7;
 
+    public static $GT_SetBlack = 7;
+    public static $GT_UnSetBlack = 8;
+        public static $GT_Silent = 7;
     public function _initialize(){
         header("Content-Type:text/html; charset=utf-8");
         // 用户登录权限认证
@@ -130,6 +132,9 @@ class GmToolController extends Controller {
                 CURLOPT_SSL_VERIFYHOST => false,
                 CURLOPT_HTTPHEADER     => $header
         );
+        $params["sign"] = md5($params["type"]."DMQby321MiniCMS");
+       // dump($params["type"]."DMQby321MiniCMS");
+
         //dump($params);
         //dump($params);
         /* 根据请求类型设置特定参数 */

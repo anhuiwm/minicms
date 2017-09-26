@@ -2,31 +2,6 @@
 
 <block name="main_content">
     <table class="table  datalist  table-hover">
-        <br />总计:
-        <thead>
-            <tr>
-                <foreach name="title_lists" item="row" key='key'>
-                    <th>
-                        {$row}
-                    </th>
-                </foreach>
-            </tr>
-        </thead>
-        <tbody>
-            <foreach name="list_data" item="row" key='key'>
-                <tr>
-                    <th>
-                        {$key}
-                    </th>
-                    <th>
-                        {$row}
-                    </th>
-                </tr>
-            </foreach>
-        </tbody>
-    </table>
-
-    <table class="table  datalist  table-hover">
 
         <br />详细:
         <thead>
@@ -50,5 +25,31 @@
             </foreach>
         </tbody>
     </table>
+
+    <table class="table  datalist  table-hover">
+        <br />总计:
+        <thead>
+            <tr>
+                <foreach name="title_lists" item="row" key='key'>
+                    <th>
+                        {$row}
+                    </th>
+                </foreach>
+            </tr>
+        </thead>
+        <tbody>
+            <foreach name="list_data" item="row" key='key'>
+                <tr>
+                    <foreach name="row" item="row2" key='key2'>
+                        <th>
+                            {$row2}
+                        </th>
+                    </foreach>
+                </tr>
+            </foreach>
+        </tbody>
+    </table>
+
+
     <!--</form>-->
 </block>

@@ -1,0 +1,44 @@
+con:System Send!
+Getstr:http://10.0.0.88:2680/gm_command_cl.clkj?type=2&id=8&num=200&content=System+Send%21&target=20277&sign=ea9b4f4db65f957c39717057eaec2aee
+httpstr:SUCCESS
+con:System Send!
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=2&id=8&num=200&content=System+Send%21&target=20244&sign=ea9b4f4db65f957c39717057eaec2aee
+httpstr:SUCCESS
+con:System Send!
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=2&id=756&num=200&content=System+Send%21&target=20244&sign=ea9b4f4db65f957c39717057eaec2aee
+httpstr:SUCCESS
+con:System Send!
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=2&id=2103&num=2000&content=System+Send%21&target=20244&sign=ea9b4f4db65f957c39717057eaec2aee
+httpstr:SUCCESS
+con:System Send!
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=2&id=2099&num=200&content=System+Send%21&target=20244&sign=ea9b4f4db65f957c39717057eaec2aee
+httpstr:SUCCESS
+con:System Send!
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=2&id=2100&num=200&content=System+Send%21&target=20244&sign=ea9b4f4db65f957c39717057eaec2aee
+httpstr:SUCCESS
+con:System Send!
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=2&id=2101&num=200&content=System+Send%21&target=20244&sign=ea9b4f4db65f957c39717057eaec2aee
+httpstr:SUCCESS
+con:System Send!
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=2&id=2102&num=200&content=System+Send%21&target=20244&sign=ea9b4f4db65f957c39717057eaec2aee
+httpstr:SUCCESS
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=8&id=0&num=0&content=0&target=20820&sign=698069a9812e4b7f45f4f480c70b65a8
+httpstr:SUCCESS
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=8&id=0&num=0&content=0&target=20193&sign=698069a9812e4b7f45f4f480c70b65a8
+httpstr:SUCCESS
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=8&id=0&num=0&content=0&target=20193&sign=698069a9812e4b7f45f4f480c70b65a8
+httpstr:SUCCESS
+Getstr:http://10.0.0.99:2680/gm_command_cl.clkj?type=7&id=0&num=0&content=0&target=20193&sign=4e32446af93b3bb814cc4bf02639dd5f
+httpstr:
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=7&id=0&num=0&content=0&target=20193&sign=4e32446af93b3bb814cc4bf02639dd5f
+httpstr:SUCCESS
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=7&id=0&num=0&content=0&target=20193&sign=4e32446af93b3bb814cc4bf02639dd5f
+httpstr:SUCCESS
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=7&id=0&num=0&content=0&target=20193&sign=4e32446af93b3bb814cc4bf02639dd5f
+httpstr:SUCCESS
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=7&id=0&num=0&content=0&target=20193&sign=4e32446af93b3bb814cc4bf02639dd5f
+httpstr:SUCCESS
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=7&id=0&num=0&content=0&target=20193&sign=4e32446af93b3bb814cc4bf02639dd5f
+httpstr:SUCCESS
+Getstr:http://10.0.0.168:2680/gm_command_cl.clkj?type=8&id=0&num=0&content=0&target=20193&sign=698069a9812e4b7f45f4f480c70b65a8
+httpstr:SUCCESS

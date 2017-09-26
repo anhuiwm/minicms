@@ -132,14 +132,17 @@ class CommandController extends GmToolController {
 }
 
     public function base(){
-       $gameid = $_POST["gameid"];
-       $userid = $_POST["userid"];
+
        if(IS_POST){
+              $gameid = $_POST["gameid"];
+       $userid = $_POST["userid"];
+       $account = $_POST["accountname"];
+              $nick = $_POST["nickname"];
            $db_config = get_db_config();
            $res = null;
            if(!empty($gameid)){
                $sql = "	select a.AccountName,a.FishExp,a.LastLogonTime,a.Production, a.IsRobot,a.FreezeEndTime,a.RsgIP,a.UserID,a.NickName,a.FishLevel,a.FaceID,a.Gender,a.IsOnline,a.AchievementPoint,a.TitleID,
-					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.MonthCardID,a.MonthCardEndTime,
+					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.TotalRechargeSum,a.MonthCardID,a.MonthCardEndTime,
 					b.GameID as 'GameID', a.CashPointNum, a.UsingLauncher,a.MaxRateValue,a.CurrencyNum,a.GlobalNum,a.MedalNum,
 					c.MonthRewardSum,c.MonthFirstSum,c.MonthSecondSum,c.MonthThreeSum,c.CatchFishSum,c.GeGlobelSum,c.RoleMonthSigupSum,c.NonMonthGameSec,c.TotalGameSec,
 					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum 
@@ -151,7 +154,7 @@ class CommandController extends GmToolController {
                $res =  M("accountinfo",null,$db_config)->query($sql);
            }else  if(!empty($userid)){
                $sql = "select	a.AccountName,a.FishExp,a.LastLogonTime,a.Production, a.IsRobot,a.FreezeEndTime,a.RsgIP, a.UserID,a.NickName,a.FishLevel,a.FaceID,a.Gender,a.IsOnline,a.AchievementPoint,a.TitleID,
-					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.MonthCardID,a.MonthCardEndTime,
+					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.TotalRechargeSum,a.MonthCardID,a.MonthCardEndTime,
 					b.GameID as 'GameID', a.CashPointNum, a.UsingLauncher,a.MaxRateValue,a.CurrencyNum,a.GlobalNum,a.MedalNum,
 					c.MonthRewardSum,c.MonthFirstSum,c.MonthSecondSum,c.MonthThreeSum,c.CatchFishSum,c.GeGlobelSum,c.RoleMonthSigupSum,c.NonMonthGameSec,c.TotalGameSec,
 					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum 
@@ -159,6 +162,30 @@ class CommandController extends GmToolController {
 	                left join fishgameid as b on a.UserID = b.UserID 
 	                left join fishgamedata as c on c.UserID = b.UserID 
 	                where a.UserID= {$userid};
+                ";
+               $res =  M("accountinfo",null,$db_config)->query($sql);
+           }else  if(!empty($account)){
+               $sql = "select	a.AccountName,a.FishExp,a.LastLogonTime,a.Production, a.IsRobot,a.FreezeEndTime,a.RsgIP, a.UserID,a.NickName,a.FishLevel,a.FaceID,a.Gender,a.IsOnline,a.AchievementPoint,a.TitleID,
+					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.TotalRechargeSum,a.MonthCardID,a.MonthCardEndTime,
+					b.GameID as 'GameID', a.CashPointNum, a.UsingLauncher,a.MaxRateValue,a.CurrencyNum,a.GlobalNum,a.MedalNum,
+					c.MonthRewardSum,c.MonthFirstSum,c.MonthSecondSum,c.MonthThreeSum,c.CatchFishSum,c.GeGlobelSum,c.RoleMonthSigupSum,c.NonMonthGameSec,c.TotalGameSec,
+					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum 
+	                from accountinfo as a 
+	                left join fishgameid as b on a.UserID = b.UserID 
+	                left join fishgamedata as c on c.UserID = b.UserID 
+	                where a.AccountName= '{$account}';
+                ";
+               $res =  M("accountinfo",null,$db_config)->query($sql);
+           }else  if(!empty($account)){
+               $sql = "select	a.AccountName,a.FishExp,a.LastLogonTime,a.Production, a.IsRobot,a.FreezeEndTime,a.RsgIP, a.UserID,a.NickName,a.FishLevel,a.FaceID,a.Gender,a.IsOnline,a.AchievementPoint,a.TitleID,
+					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.TotalRechargeSum,a.MonthCardID,a.MonthCardEndTime,
+					b.GameID as 'GameID', a.CashPointNum, a.UsingLauncher,a.MaxRateValue,a.CurrencyNum,a.GlobalNum,a.MedalNum,
+					c.MonthRewardSum,c.MonthFirstSum,c.MonthSecondSum,c.MonthThreeSum,c.CatchFishSum,c.GeGlobelSum,c.RoleMonthSigupSum,c.NonMonthGameSec,c.TotalGameSec,
+					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum 
+	                from accountinfo as a 
+	                left join fishgameid as b on a.UserID = b.UserID 
+	                left join fishgamedata as c on c.UserID = b.UserID 
+	                where a.NickName= '{$nick}';
                 ";
                $res =  M("accountinfo",null,$db_config)->query($sql);
            }
@@ -178,6 +205,7 @@ class CommandController extends GmToolController {
                  "globalnum" => "金币",
                  "medalnum" => "红包",
                  "viplevel" => "VIP",
+                 "totalrechargesum"=>"充值金额",
                  "usinglauncher" => "当前炮台",
                  "maxratevalue" => "最大倍率",
                  "achievementpoint" => "成就点",
@@ -218,7 +246,8 @@ class CommandController extends GmToolController {
                         //$netip = sprintf('%u',$net);
                         $ip = long2ip($tempres);
                         //dump($ip);
-                        $ip = "106.15.198.179";// $this->hostip2netip($ip);
+                        //$ip = "106.15.198.179";// 
+                        $ip = $this->hostip2netip($ip);
                         //dump($netip);
                         //dump($ip);
                         $ipInfos = $this->GetIpLookup($ip);
@@ -248,18 +277,22 @@ class CommandController extends GmToolController {
 
    public function stock(){
            $db_config = get_logdb_config();
-
-           $res =  M("fishstocklog",null,$db_config)->query("select * from fishstocklog");
-
+           $res =  M("fishstocklog",null,$db_config)->query("select `ServerID` , `TableType`,  `StockScore`,(StockScore-20000000+TaxScore) as Income,  `TaxScore`,  `LogTime` from fishstocklog");
            if($res){
-              
-               $arr_score = array(0,0,0,0);
+               $arr_score = array();
                foreach($res as $key=>$value){
-                   $arr_score[$value["tabletype"]] += $value["stockscore"];
+               if($value["stockscore"] != 0){
+                      $arr_score[$value["tabletype"]]["type"] = $value["tabletype"];
+                      $arr_score[$value["tabletype"]]["stock"] += $value["stockscore"];
+                      $arr_score[$value["tabletype"]]["tax"] += $value["taxscore"];
+                   }
+                   else{
+                        unset($res[$key]);
+                    }
                 }
   
-                $this->detail_title_lists=array("服务器ID","房间类型","StockScore","LogTime");
-                $this->title_lists = array("房间类型","房间类型总库存");
+                $this->detail_title_lists=array("服务器ID","房间类型","实时库存","净收入","税收","LogTime");
+                $this->title_lists = array("房间类型","房间类型总库存","房间类型总税收");
                 $this->detail_list_data = $res; 
                 $this->list_data = $arr_score;
            }
@@ -336,11 +369,11 @@ class CommandController extends GmToolController {
                     $userid = $_POST["userid"];
             $itemid = $_POST["itemid"];
                     $db_config = get_db_config();
-                    if(!empty($itemid)){
-                       $sql = "SELECT itemid ,SUM(itemsum) AS sum FROM `fishitem` WHERE ( itemid>=900 and itemid <910  or itemid={$itemid}) GROUP BY itemid";
+                    if(!empty($itemid) && $itemid<900 && $itemid>910){
+                       $sql = "SELECT itemid ,SUM(itemsum) AS sum FROM `fishitem` WHERE ( itemid>=900 and itemid <=910  or itemid={$itemid} and userid>11000) GROUP BY itemid";
                     }
                     else{
-                       $sql = "SELECT itemid ,SUM(itemsum) AS sum FROM `fishitem` WHERE ( itemid>=900 and itemid <910) GROUP BY itemid";
+                       $sql = "SELECT itemid ,SUM(itemsum) AS sum FROM `fishitem` WHERE ( itemid>=900 and itemid <=910 and userid>11000) GROUP BY itemid";
                     }
                     
                    $this->title_lists_sum = array(
@@ -363,11 +396,24 @@ class CommandController extends GmToolController {
             $map = array();
             if(!empty($userid)){
                 $map['UserID'] = array('eq',$userid);
+                 $map['userid'] = array('gt',11000);
                 if(!empty($itemid)){
                     $map['ItemID'] = array('eq',$itemid);
                 }
-                $this->list_data= M("fishitem",null,$db_config)->field($this->title_lists)->where($map)->select();
+                $this->list_data= M("fishitem",null,$db_config)->field($this->title_lists)->where($map)->order('itemsum desc')->select();
             }
+            else{
+                if(!empty($itemid)){
+                    $map['ItemID'] = array('eq',$itemid);
+                    $map['userid'] = array('gt',11000);
+                    $this->list_data= M("fishitem",null,$db_config)->field($this->title_lists)->where($map)->order('itemsum desc')->select();
+                }
+            }
+
+          $sql = "SELECT SUM(GlobalNum) AS sum FROM `accountinfo` WHERE IsRobot != 0";
+          $goldres= M("fishitem",null,$db_config)->query($sql);
+          $this->gold = $goldres[0]["sum"];
+          //dump($this->gold);
         }
 
         $this->display('GmTool:item');
@@ -507,7 +553,6 @@ AddRewardID   ";
         //IN  _platform     varchar(32))
 
         if(IS_POST){
-            dump($_POST);
             $count     = $_POST["count"]    ;
             $name      = $_POST["name"]     ;
             $gift      = $_POST["gift"]     ;
@@ -592,8 +637,6 @@ AddRewardID   ";
 
     public function broadcast(){
         if(IS_POST){
-            dump($_POST);
-            dump($_POST);
             $RewardNum=I('post.RewardNum');
             $Context = I('post.Context');
             if(empty($RewardNum)||empty($Context))
@@ -662,6 +705,71 @@ AddRewardID   ";
         }
     }
 
+    public function set_black(){
+        if(IS_POST){
+            $DestUserID = I('post.DestUserID');
+            if(empty($DestUserID))
+            {
+                $this->redirect('GmTool:set_black','',3, '亲，参数为空!!!');
+            }
+            $arr_db_url = get_db_config_url();
+            $data['type']= self::$GT_SetBlack;
+            $data['id']=0;
+            $data['num']=0;
+            $data['content']=0;
+            $data['target']=$DestUserID;
+            $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
+            file_put_contents('wmgmlog.txt', "httpstr:".$httpstr.PHP_EOL, FILE_APPEND);
+            if($httpstr == "SUCCESS")
+            {
+                $this->redirect('GmTool:set_black','',3, '亲，发送命令成功!稍后请查询!!');
+            }
+            else
+            {
+                $this->redirect('GmTool:set_black','',3, '亲，发送失败!!!');
+            }
+        }
+        else{
+            $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
+            $this->display('GmTool:set_black');
+        }
+    }
+
+    public function unset_black(){
+        if(IS_POST){
+            $DestUserID = I('post.DestUserID');
+            if(empty($DestUserID))
+            {
+                $this->redirect('GmTool:unset_black','',3, '亲，参数为空!!!');
+            }
+            $arr_db_url = get_db_config_url();
+            $data['type']= self::$GT_UnSetBlack;
+            $data['id']=0;
+            $data['num']=0;
+            $data['content']=0;
+            $data['target']=$DestUserID;
+            $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
+            file_put_contents('wmgmlog.txt', "httpstr:".$httpstr.PHP_EOL, FILE_APPEND);
+            if($httpstr == "SUCCESS")
+            {
+                $this->redirect('GmTool:unset_black','',3, '亲，发送命令成功!稍后请查询!!');
+            }
+            else
+            {
+                $this->redirect('GmTool:unset_black','',3, '亲，发送失败!!!');
+            }
+        }
+        else{
+            $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
+            $this->display('GmTool:unset_black');
+        }
+    }
     public function silent(){
         if(IS_POST){
             $RewardNum=I('post.RewardNum');

@@ -14,7 +14,9 @@
     <!--<form id="form_list" name="form_list" action="" method="post">-->
     <form method="post" class="myforms" action="{:U('GmTool/Command/base')}">
         <input type="text" class="form-control" placeholder="GameID" name="gameid"> 或
-        <input type="text" class="form-control" value="{$curuser}" placeholder="UserID" name="userid">
+        <input type="text" class="form-control" value="{$curuser}" placeholder="UserID" name="userid">或
+        <input type="text" class="form-control" placeholder="账户" name="accountname">或
+        <input type="text" class="form-control" placeholder="昵称" name="nickname">
         <br />
         <button class="btn btn-success <!--btn-block-->">提交</button>
     </form>

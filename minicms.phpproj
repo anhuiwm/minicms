@@ -690,6 +690,7 @@
     <Content Include="Public\default\GmTool\chargelog.html" />
     <Content Include="Public\default\GmTool\reloadconfig.html" />
     <Content Include="Public\default\GmTool\selectdate.html" />
+    <Content Include="Public\default\GmTool\set_black.html" />
     <Content Include="Public\default\GmTool\silent.html" />
     <Content Include="Public\default\GmTool\stock.html" />
     <Content Include="Public\default\GmTool\use_cdkey.html" />
