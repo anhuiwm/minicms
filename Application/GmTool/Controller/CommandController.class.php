@@ -145,7 +145,9 @@ class CommandController extends GmToolController {
 					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.TotalRechargeSum,a.MonthCardID,a.MonthCardEndTime,
 					b.GameID as 'GameID', a.CashPointNum, a.UsingLauncher,a.MaxRateValue,a.CurrencyNum,a.GlobalNum,a.MedalNum,
 					c.MonthRewardSum,c.MonthFirstSum,c.MonthSecondSum,c.MonthThreeSum,c.CatchFishSum,c.GeGlobelSum,c.RoleMonthSigupSum,c.NonMonthGameSec,c.TotalGameSec,
-					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum 
+					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum,
+a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum,a.DayTaskActiviness,a.WeekTaskActiviness,a.WeekGlobeNum,a.IsCheckToday,a.SendGoldBulletNum,a.SendSilverBulletNum,a.SendBronzeBulletNum,a.GuideStep
+
 	                from accountinfo as a 
 	                left join fishgameid as b on a.UserID = b.UserID 
 	                left join fishgamedata as c on c.UserID = b.UserID 
@@ -157,7 +159,9 @@ class CommandController extends GmToolController {
 					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.TotalRechargeSum,a.MonthCardID,a.MonthCardEndTime,
 					b.GameID as 'GameID', a.CashPointNum, a.UsingLauncher,a.MaxRateValue,a.CurrencyNum,a.GlobalNum,a.MedalNum,
 					c.MonthRewardSum,c.MonthFirstSum,c.MonthSecondSum,c.MonthThreeSum,c.CatchFishSum,c.GeGlobelSum,c.RoleMonthSigupSum,c.NonMonthGameSec,c.TotalGameSec,
-					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum 
+					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum ,
+a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum,a.DayTaskActiviness,a.WeekTaskActiviness,a.WeekGlobeNum,a.IsCheckToday,a.SendGoldBulletNum,a.SendSilverBulletNum,a.SendBronzeBulletNum,a.GuideStep
+
 	                from accountinfo as a 
 	                left join fishgameid as b on a.UserID = b.UserID 
 	                left join fishgamedata as c on c.UserID = b.UserID 
@@ -169,7 +173,9 @@ class CommandController extends GmToolController {
 					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.TotalRechargeSum,a.MonthCardID,a.MonthCardEndTime,
 					b.GameID as 'GameID', a.CashPointNum, a.UsingLauncher,a.MaxRateValue,a.CurrencyNum,a.GlobalNum,a.MedalNum,
 					c.MonthRewardSum,c.MonthFirstSum,c.MonthSecondSum,c.MonthThreeSum,c.CatchFishSum,c.GeGlobelSum,c.RoleMonthSigupSum,c.NonMonthGameSec,c.TotalGameSec,
-					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum 
+					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum,
+a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum,a.DayTaskActiviness,a.WeekTaskActiviness,a.WeekGlobeNum,a.IsCheckToday,a.SendGoldBulletNum,a.SendSilverBulletNum,a.SendBronzeBulletNum,a.GuideStep
+
 	                from accountinfo as a 
 	                left join fishgameid as b on a.UserID = b.UserID 
 	                left join fishgamedata as c on c.UserID = b.UserID 
@@ -181,7 +187,9 @@ class CommandController extends GmToolController {
 					a.CharmArray ,a.LastLogonIp,a.IsShowIpAddress, a.VipLevel,a.TotalRechargeSum,a.MonthCardID,a.MonthCardEndTime,
 					b.GameID as 'GameID', a.CashPointNum, a.UsingLauncher,a.MaxRateValue,a.CurrencyNum,a.GlobalNum,a.MedalNum,
 					c.MonthRewardSum,c.MonthFirstSum,c.MonthSecondSum,c.MonthThreeSum,c.CatchFishSum,c.GeGlobelSum,c.RoleMonthSigupSum,c.NonMonthGameSec,c.TotalGameSec,
-					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum 
+					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum,
+a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum,a.DayTaskActiviness,a.WeekTaskActiviness,a.WeekGlobeNum,a.IsCheckToday,a.SendGoldBulletNum,a.SendSilverBulletNum,a.SendBronzeBulletNum,a.GuideStep
+
 	                from accountinfo as a 
 	                left join fishgameid as b on a.UserID = b.UserID 
 	                left join fishgamedata as c on c.UserID = b.UserID 
@@ -230,6 +238,19 @@ class CommandController extends GmToolController {
                  "isrobot"=>"机器人",
                  "freezeendtime"=>"冻结时间",
                  "rsgip"=>"注册IP",
+                 "GameTime"=>"GameTime","titleid"=>"titleid",
+"onlinesec"=>"onlinesec",
+"goldbulletnum"=>"goldbulletnum",
+"nobilitypoint"=>"nobilitypoint",
+"addupchecknum"=>"addupchecknum",
+"daytaskactiviness"=>"daytaskactiviness",
+"weektaskactiviness"=>"weektaskactiviness",
+"weekglobenum"=>"weekglobenum",
+"ischecktoday"=>"ischecktoday",
+"sendgoldbulletnum"=>"sendgoldbulletnum",
+"sendsilverbulletnum"=>"sendsilverbulletnum",
+"sendbronzebulletnum"=>"sendbronzebulletnum",
+"guidestep"=>"guidestep",
                 );
 
                 //dump($arr_name);
