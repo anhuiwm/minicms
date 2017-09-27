@@ -1,0 +1,69 @@
+﻿<extend name="Public@Public/base" />
+<block name="main_content">
+    <div class="form-group">
+        <form method="post" class="myforms" action="{:U('GmTool/Command/itemlog')}">
+            </br> 请输入:</br>
+            <input type="text" class="form-control" value="{$curuser}" placeholder="UserID" name="userid">
+            <!--<input type="text" class="form-control"  placeholder="typeid" name="typeid">-->
+            <select class="form-control" name="typeid">
+                <option value="11">[物品    ][NORMAL   ]</option>
+                <option value="10">[黄金弹头][BULLET   ]</option>
+                <option value="1 ">[点券    ][Cashpoint]</option>
+                <option value="2 ">[奖牌    ][Medal    ]</option>
+                <option value="3 ">[奖励    ][Reward   ]</option>
+                <option value="4 ">[牛牛    ][NiuNiu   ]</option>
+                <option value="5 ">[赠送物品][GlobelBag]</option>
+                <option value="6 ">[抽奖    ][Lottery  ]</option>
+                <option value="7 ">[技能    ][Skill    ]</option>
+                <option value="8 ">[森林舞会][Dial     ]</option>
+                <option value="9 ">[        ][Car      ]</option>
+            </select>
+            <input type="text" class="form-control"  placeholder="(type为物品时为itemid)" name="typesum">
+            <input type="text" class="form-control" name="starttime"  onfocus="selectdate(1)" placeholder="开始日期" class="input" readonly>
+            <input type="text" class="form-control" name="endtime"  onfocus="selectdate(2)" placeholder="结束日期" class="input" readonly>
+            <button class="btn btn-info btn-sm ">查询</button>
+        </form>
+    </div>
+
+    个人物品记录:
+ <table class="table  datalist  table-hover">
+  <thead>
+    <tr>
+      <foreach name="title_lists" item="row">
+        <th>
+          {$row}
+        </th>
+      </foreach>
+      <th class="tright pad-r21" scope="row">
+          <div class="btn-group">
+          </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <foreach name="list_data" item="row" key='key'>
+    <tr>
+      <foreach name="title_lists" item="row1" key='key1'>
+        <td>
+         {$row[$row1]}
+        </td>
+      </foreach>
+    </tr>
+    </foreach>
+  </tbody>
+    <thead>
+        <tr>
+            <foreach name="title_lists" item="row">
+                <th>
+                    {$row}
+                </th>
+            </foreach>
+            <th class="tright pad-r21" scope="row">
+                <div class="btn-group">
+                </div>
+            </th>
+        </tr>
+    </thead>
+  </table>
+
+</block>

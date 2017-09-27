@@ -441,6 +441,84 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
     }
 
 
+       public function itemlog(){
+        $curuserid = get_current_userid();
+        if(isset($curuserid)){
+            $this->curuser = $curuserid;
+        }
+        $this->title_lists = array(
+                        "id",
+                        "userid",
+                        "typeid",
+                        "typesum",
+                        "param",
+                        "endparam",
+                        "info",
+                        "logtime",
+                        );
+
+        if(IS_POST)
+        {
+       // dump($_POST);
+                    $userid = $_POST["userid"];
+                    $startdate = $_POST["starttime"];
+                    $enddate = $_POST["endtime"];
+                    $typeid = $_POST["typeid"];
+                    $typesum = $_POST["typesum"];
+                    if( empty($startdate) || empty($enddate) )
+                    {
+                    $startdate = date('Y-n-j');
+                    $enddate = date('Y-n-j');
+                        //$this->redirect('GmTool:itemlog','',1, '亲，日期不能为空!!!');
+                    }
+
+                    $db_config = get_logdb_config();
+                    $stimestamp = strtotime($startdate);
+                    $etimestamp = strtotime($enddate);
+                    $days = ($etimestamp-$stimestamp)/86400+1;
+                    $date = array();
+                    $map = array();
+                    if(!empty($userid)){
+                          $map['UserID'] = array('eq',$userid);
+                    }
+                     if(!empty($typeid)){
+                          $map['TypeID'] = array('eq',$typeid);
+                    }
+                     if(!empty($typesum)){
+                          $map['TypeSum'] = array('eq',$typesum);
+                    }
+                   // dump($map);
+                    $arr_res = array();
+                    for($i=0; $i<$days; $i++){
+                        $day = date('Y-n-j', $stimestamp+(86400*$i));
+                        $day = str_replace("-","_",$day);
+                        $fishlogday = "fishlog_".$day;
+
+                        //dump($fishlogday);
+                        try{
+                           $res= M($fishlogday,null,$db_config)->field($this->title_lists)->where($map)->select();
+                        }catch(\Exception $e){
+                            //$res = array("code" => "error", "message" => "数据库错误");
+                        } 
+                        //dump($res);
+                        if(isset($res))
+                        {
+                          // dump($res);
+                           $arr_res = array_merge($arr_res,$res);
+                           //dump($arr_res);
+                        }
+                         unset($res);
+                        //$this->list_data= M($fishlogday,null,$db_config)->field($this->title_lists)->where($map)->select();
+                        //dump(M($fishlogday,null,$db_config)->getLastSql());
+                       // dump(M($fishlogday,null,$db_config)->getLastSql());
+                       // dump(M($fishlogday,null,$db_config)->getLastSql());
+                        //dump($this->list_data);
+                    }
+                    //dump($arr_res);
+                    $this->list_data = $arr_res;
+       }
+       $this->display('GmTool:itemlog');
+    }
 
     public function chargelog(){
             if(IS_POST){

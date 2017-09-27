@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -71,24 +71,24 @@
                 var endTime = $("#enddate").val();
                 if (endTime != "") {
                     WdatePicker({
-                        dateFmt: 'yyyy-MM-dd',
+                        dateFmt: 'yyyy-M-d',
                         maxDate: endTime
                     });
                 } else {
                     WdatePicker({
-                        dateFmt: 'yyyy-MM-dd'
+                        dateFmt: 'yyyy-M-d'
                     });
                 }
             } else {
                 var startTime = $("#startdate").val();
                 if (startTime != "") {
                     WdatePicker({
-                        dateFmt: 'yyyy-MM-dd',
+                        dateFmt: 'yyyy-M-d',
                         minDate: startTime
                     });
                 } else {
                     WdatePicker({
-                        dateFmt: 'yyyy-MM-dd '
+                        dateFmt: 'yyyy-M-d '
                     });
                 }
             }
