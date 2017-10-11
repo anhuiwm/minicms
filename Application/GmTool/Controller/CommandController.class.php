@@ -365,12 +365,12 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
                 $sql = $sql." where "."ispublic=".$public;
             }
         }
-        dump($sql);
+        //dump($sql);
 
 
         $this->list_data= M("cdkey",null,$db_config)->query($sql);
         //dump($this->list_data);
-        dump( M("cdkey",null,$db_config)->getLastSql() );
+        //dump( M("cdkey",null,$db_config)->getLastSql() );
         $this->display('GmTool:cdkey');
     }
 
