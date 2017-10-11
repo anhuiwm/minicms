@@ -298,7 +298,7 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
 
    public function stock(){
            $db_config = get_logdb_config();
-           $res =  M("fishstocklog",null,$db_config)->query("select `ServerID` , `TableType`,  `StockScore`,(StockScore-20000000+TaxScore) as Income,  `TaxScore`,  `LogTime` from fishstocklog");
+           $res =  M("fishstocklog",null,$db_config)->query("select `ServerID` , `TableType`,  `StockScore`,(StockScore-100000000+TaxScore) as Income,  `TaxScore`,  `LogTime` from fishstocklog");
            if($res){
                $arr_score = array();
                foreach($res as $key=>$value){
@@ -356,32 +356,21 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
             }else  if(!empty($userid)){
                 $sql = $sql." where "."userid=".$userid;
             }else  if(!empty($rewardid)){
-                $sql = $sql." where "."rewardid=".$rewardid;
+                $sql = $sql." where "."rewardid='".$rewardid."'";
             }
             else  if(!empty($platform)){
-                $sql = $sql." where "."platform=".$platform;
+                $sql = $sql." where "."platform='".$platform."'";
             }
             else  if(!empty($public)){
                 $sql = $sql." where "."ispublic=".$public;
             }
         }
-        //else
-        //{
-        //    $count=M("cdkey",null,$db_config)->count();
-        //}
+        dump($sql);
 
-        //$Page= new \Think\Page($count);// 实例化分页类 传入总记录数和每页显示的记录数
-        //$Page->lastSuffix = false;
-        //$Page->setConfig('first','首页');
-        //$Page->setConfig('last','尾页');
-        //$Page->setConfig('prev','上一页');
-        //$Page->setConfig('next','下一页');
-        //$this->page = $Page->show();// 分页显示输出
+
         $this->list_data= M("cdkey",null,$db_config)->query($sql);
         //dump($this->list_data);
-        //echo M("cdkey",null,$db_config)->getLastSql();
-        // 实现分页###########################################################
-
+        dump( M("cdkey",null,$db_config)->getLastSql() );
         $this->display('GmTool:cdkey');
     }
 
