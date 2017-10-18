@@ -1,13 +1,71 @@
 ﻿<extend name="Public@Public/base" />
 <block name="main_content">
-
-
-
     <form method="post" action="{:U('GmTool/Command/online')}">
 
         &nbsp少点击!
         <br />
-        <button class="btn btn-success <!--btn-block-->">查询</button>
+        <button class="btn btn-info btn-sm">在线人数查询</button>
     </form>
     在线人数&nbsp:&nbsp{$count}
+
+
+
+
+
+
+    <br /><br /><br />
+    <form method="post" class="myforms" action="{:U('GmTool/Command/addaccount')}">
+        <input type="text" class="form-control" name="starttime" id="startdate" onfocus="selectdate(1)" placeholder="开始日期" class="input" readonly>
+        <input type="text" class="form-control" name="endtime" id="enddate" onfocus="selectdate(1)" placeholder="结束日期" class="input" readonly>
+        <button class="btn btn-info btn-sm ">新增用户查询</button>
+    </form>
+
+    <table class="table  datalist  table-hover">
+        <thead>
+            <tr>
+                <foreach name="title_lists" item="row">
+                    <th>
+                        {$row}
+                    </th>
+                </foreach>
+                <!--<th class="tright pad-r21" scope="row">操作</th>-->
+                <!--<th class="tright pad-r21" scope="row">操作</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <foreach name="list_data" item="row" key='key'>
+                <tr>
+                    <foreach name="title_lists" item="row1" key='key1'>
+                        <td>
+                            <if condition="isset($row[$key1])">
+                                {$row[$key1]}
+                                <else />未定
+                            </if>
+                        </td>
+                    </foreach>
+
+                    <!--<td class="tright pad-r21" scope="row">
+                        <a class="abtn" href="{:U('GmTool/Command/handleentity_shen',array('id'=>$row['id'],'userid'=>$row['userid']))}"> 审核</a>
+                    </td>-->
+                    <!--<td class="tright pad-r21" scope="row">
+                        <a class="abtn" href="{:U('GmTool/Command/handleentity_fa',array('id'=>$row['id'],'userid'=>$row['userid']))}"> 发货</a>
+                    </td>-->
+                    <!--<td class="tright pad-r21" scope="row">
+                        <a class="abtn" href="{:U('GmTool/Command/handleentity_log',array('userid'=>$row['userid']))}"> 记录</a>
+                    </td>-->
+                </tr>
+            </foreach>
+        </tbody>
+        <thead>
+            <tr>
+                <foreach name="title_lists" item="row">
+                    <th>
+                        {$row}
+                    </th>
+                </foreach>
+                <!--<th class="tright pad-r21" scope="row">操作</th>-->
+                <!--<th class="tright pad-r21" scope="row">操作</th>-->
+            </tr>
+        </thead>
+    </table>
 </block>

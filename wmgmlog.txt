@@ -1,4 +1,0 @@
-con:System Send!
-Getstr:http://106.15.198.179:2680/gm_command_cl.clkj?type=2&id=8&num=10&content=System+Send%21&target=20235&sign=ea9b4f4db65f957c39717057eaec2aee
-httpstr:SUCCESS
-Getstr:http://106.15.198.179:2680/gm_command_cl.clkj?type=1&id=20235&num=16&sign=a97dd47a9c199327b37153681d291260

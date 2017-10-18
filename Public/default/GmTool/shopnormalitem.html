@@ -1,10 +1,10 @@
 ﻿<extend name="Public@Public/base" />
 <block name="main_content">
-    <form method="post" class="myforms" action="{:U('GmTool/Command/handleentity')}">
-        <select class="form-control" name="IsCheck">
+    <form method="post" class="myforms" action="{:U('GmTool/Command/shopnormalitem')}">
+        <!--<select class="form-control" name="IsCheck">
             <option value="0">审核中</option>
             <option value="1">已发货</option>
-        </select>
+        </select>-->
         <input type="text" class="form-control" placeholder="UserID" value="{$curuser}" name="userid">
         <button class="btn btn-info btn-sm ">查询</button>
     </form>
@@ -18,7 +18,7 @@
                     </th>
                 </foreach>
                 <!--<th class="tright pad-r21" scope="row">操作</th>-->
-                <th class="tright pad-r21" scope="row">操作</th>
+                <!--<th class="tright pad-r21" scope="row">操作</th>-->
             </tr>
         </thead>
         <tbody>
@@ -36,9 +36,9 @@
                     <!--<td class="tright pad-r21" scope="row">
                         <a class="abtn" href="{:U('GmTool/Command/handleentity_shen',array('id'=>$row['id'],'userid'=>$row['userid']))}"> 审核</a>
                     </td>-->
-                    <td class="tright pad-r21" scope="row">
+                    <!--<td class="tright pad-r21" scope="row">
                         <a class="abtn" href="{:U('GmTool/Command/handleentity_fa',array('id'=>$row['id'],'userid'=>$row['userid']))}"> 发货</a>
-                    </td>
+                    </td>-->
                     <!--<td class="tright pad-r21" scope="row">
                         <a class="abtn" href="{:U('GmTool/Command/handleentity_log',array('userid'=>$row['userid']))}"> 记录</a>
                     </td>-->
@@ -53,7 +53,7 @@
                     </th>
                 </foreach>
                 <!--<th class="tright pad-r21" scope="row">操作</th>-->
-                <th class="tright pad-r21" scope="row">操作</th>
+                <!--<th class="tright pad-r21" scope="row">操作</th>-->
             </tr>
         </thead>
     </table>

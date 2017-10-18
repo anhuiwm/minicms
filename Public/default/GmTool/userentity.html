@@ -1,10 +1,6 @@
 ﻿<extend name="Public@Public/base" />
 <block name="main_content">
-    <form method="post" class="myforms" action="{:U('GmTool/Command/handleentity')}">
-        <select class="form-control" name="IsCheck">
-            <option value="0">审核中</option>
-            <option value="1">已发货</option>
-        </select>
+    <form method="post" class="myforms" action="{:U('GmTool/Command/userentity')}">
         <input type="text" class="form-control" placeholder="UserID" value="{$curuser}" name="userid">
         <button class="btn btn-info btn-sm ">查询</button>
     </form>
@@ -37,7 +33,7 @@
                         <a class="abtn" href="{:U('GmTool/Command/handleentity_shen',array('id'=>$row['id'],'userid'=>$row['userid']))}"> 审核</a>
                     </td>-->
                     <td class="tright pad-r21" scope="row">
-                        <a class="abtn" href="{:U('GmTool/Command/handleentity_fa',array('id'=>$row['id'],'userid'=>$row['userid']))}"> 发货</a>
+                        <a class="abtn" href="{:U('GmTool/Command/setuserentity',array('userid'=>$row['userid']))}"> 测试通过</a>
                     </td>
                     <!--<td class="tright pad-r21" scope="row">
                         <a class="abtn" href="{:U('GmTool/Command/handleentity_log',array('userid'=>$row['userid']))}"> 记录</a>

@@ -99,31 +99,31 @@ class CommandController extends GmToolController {
          $this->redirect('GmTool:add_cashpoint','',3, '亲，发送命令成功!稍后请查询!!');
     }
 
-    public function reversebytes_uint32t($value){  
+    public function reversebytes_uint32t($value){
    // dump($value);
-        return ($value & 0x000000FF) << 24 | ($value & 0x0000FF00) << 8 | ($value & 0x00FF0000) >> 8 | ($value & 0xFF000000) >> 24;   
-    }  
-    public function GetIpLookup($ip = ''){  
-            if(empty($ip)){  
-                $ip = GetIp();  
-            }  
-            $res = @file_get_contents('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=' . $ip);  
-            if(empty($res)){ return false; }  
-            $jsonMatches = array();  
-            preg_match('#\{.+?\}#', $res, $jsonMatches);  
-            if(!isset($jsonMatches[0])){ return false; }  
-            $json = json_decode($jsonMatches[0], true);  
-            if(isset($json['ret']) && $json['ret'] == 1){  
-                $json['ip'] = $ip;  
-                unset($json['ret']);  
-            }else{  
-                return false;  
-            }  
+        return ($value & 0x000000FF) << 24 | ($value & 0x0000FF00) << 8 | ($value & 0x00FF0000) >> 8 | ($value & 0xFF000000) >> 24;
+    }
+    public function GetIpLookup($ip = ''){
+            if(empty($ip)){
+                $ip = GetIp();
+            }
+            $res = @file_get_contents('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=' . $ip);
+            if(empty($res)){ return false; }
+            $jsonMatches = array();
+            preg_match('#\{.+?\}#', $res, $jsonMatches);
+            if(!isset($jsonMatches[0])){ return false; }
+            $json = json_decode($jsonMatches[0], true);
+            if(isset($json['ret']) && $json['ret'] == 1){
+                $json['ip'] = $ip;
+                unset($json['ret']);
+            }else{
+                return false;
+            }
             //dump($json);
             $res = $json["country"].$json["province"].$json["city"];
-            return $res;  
-        }  
-  
+            return $res;
+        }
+
   public  function hostip2netip($ip){
    list($ip1,$ip2,$ip3,$ip4)=explode(".",$ip);
     //return($ip4<<24)|($ip3<<16)|($ip2<<8)|($ip1);
@@ -148,9 +148,9 @@ class CommandController extends GmToolController {
 					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum,
 a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum,a.DayTaskActiviness,a.WeekTaskActiviness,a.WeekGlobeNum,a.IsCheckToday,a.SendGoldBulletNum,a.SendSilverBulletNum,a.SendBronzeBulletNum,a.GuideStep
 
-	                from accountinfo as a 
-	                left join fishgameid as b on a.UserID = b.UserID 
-	                left join fishgamedata as c on c.UserID = b.UserID 
+	                from accountinfo as a
+	                left join fishgameid as b on a.UserID = b.UserID
+	                left join fishgamedata as c on c.UserID = b.UserID
 	                where b.GameID= {$gameid};
                 ";
                $res =  M("accountinfo",null,$db_config)->query($sql);
@@ -162,9 +162,9 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
 					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum ,
 a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum,a.DayTaskActiviness,a.WeekTaskActiviness,a.WeekGlobeNum,a.IsCheckToday,a.SendGoldBulletNum,a.SendSilverBulletNum,a.SendBronzeBulletNum,a.GuideStep
 
-	                from accountinfo as a 
-	                left join fishgameid as b on a.UserID = b.UserID 
-	                left join fishgamedata as c on c.UserID = b.UserID 
+	                from accountinfo as a
+	                left join fishgameid as b on a.UserID = b.UserID
+	                left join fishgamedata as c on c.UserID = b.UserID
 	                where a.UserID= {$userid};
                 ";
                $res =  M("accountinfo",null,$db_config)->query($sql);
@@ -176,9 +176,9 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
 					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum,
 a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum,a.DayTaskActiviness,a.WeekTaskActiviness,a.WeekGlobeNum,a.IsCheckToday,a.SendGoldBulletNum,a.SendSilverBulletNum,a.SendBronzeBulletNum,a.GuideStep
 
-	                from accountinfo as a 
-	                left join fishgameid as b on a.UserID = b.UserID 
-	                left join fishgamedata as c on c.UserID = b.UserID 
+	                from accountinfo as a
+	                left join fishgameid as b on a.UserID = b.UserID
+	                left join fishgamedata as c on c.UserID = b.UserID
 	                where a.AccountName= '{$account}';
                 ";
                $res =  M("accountinfo",null,$db_config)->query($sql);
@@ -190,16 +190,16 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
 					c.CatchFish9,c.CatchFish18,c.CatchFish20,c.CatchFish1,c.CatchFish3,c.CatchFish19,c.MaxComboSum,
 a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum,a.DayTaskActiviness,a.WeekTaskActiviness,a.WeekGlobeNum,a.IsCheckToday,a.SendGoldBulletNum,a.SendSilverBulletNum,a.SendBronzeBulletNum,a.GuideStep
 
-	                from accountinfo as a 
-	                left join fishgameid as b on a.UserID = b.UserID 
-	                left join fishgamedata as c on c.UserID = b.UserID 
+	                from accountinfo as a
+	                left join fishgameid as b on a.UserID = b.UserID
+	                left join fishgamedata as c on c.UserID = b.UserID
 	                where a.NickName= '{$nick}';
                 ";
                $res =  M("accountinfo",null,$db_config)->query($sql);
            }
            if($res){
           // dump($res);
-           $arr_name = array(        
+           $arr_name = array(
                  "userid" => "userid",
                  "gameid" => "客户端ID",
                  "accountname"=>"账户名",
@@ -234,7 +234,7 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
                  "maxcombosum" => "最大连击",
                  "FishExp"=>"经验",
                  "lastlogontime"=>"最后登录时间",
-                 "production"=>"个人产出", 
+                 "production"=>"个人产出",
                  "isrobot"=>"机器人",
                  "freezeendtime"=>"冻结时间",
                  "rsgip"=>"注册IP",
@@ -260,14 +260,14 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
                     $tempres = $res[0][$key];
                    // dump($tempres);
                     if(isset($tempres)){
-                    
+
                         if($key=="lastlogonip"){
                         //dump($tempres);
                         //$net = $this->reversebytes_uint32t($tempres);
                         //$netip = sprintf('%u',$net);
                         $ip = long2ip($tempres);
                         //dump($ip);
-                        //$ip = "106.15.198.179";// 
+                        //$ip = "106.15.198.179";//
                         $ip = $this->hostip2netip($ip);
                         //dump($netip);
                         //dump($ip);
@@ -311,10 +311,10 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
                         unset($res[$key]);
                     }
                 }
-  
+
                 $this->detail_title_lists=array("服务器ID","房间类型","实时库存","净收入","税收","LogTime");
                 $this->title_lists = array("房间类型","房间类型总库存","房间类型总税收");
-                $this->detail_list_data = $res; 
+                $this->detail_list_data = $res;
                 $this->list_data = $arr_score;
            }
        $this->display("GmTool:stock");
@@ -385,7 +385,7 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
                     else{
                        $sql = "SELECT itemid ,SUM(itemsum) AS sum FROM `fishitem` WHERE ( itemid>=900 and itemid <=910 and userid>11000) GROUP BY itemid";
                     }
-                    
+
                    $this->title_lists_sum = array(
                                 "itemid",
                                 "sum"
@@ -488,7 +488,7 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
                            $res= M($fishlogday,null,$db_config)->field($this->title_lists)->where($map)->select();
                         }catch(\Exception $e){
                             //$res = array("code" => "error", "message" => "数据库错误");
-                        } 
+                        }
                         //dump($res);
                         if(isset($res))
                         {
@@ -512,7 +512,7 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
     public function chargelog(){
             if(IS_POST){
         $db_config = get_logdb_config();
-        $sql = " select 
+        $sql = " select
 OrderStates   ,
 UserID        ,
 Price         ,
@@ -520,7 +520,7 @@ orderid       ,
 ShopItemID    ,
 ChannelCode   ,
 LogTime       ,
-AddRewardID   
+AddRewardID
 from fishrechargelog
 ";
 
@@ -926,7 +926,108 @@ AddRewardID   ";
         }
     }
 
-    public function handleentity(){
+        public function handleentity(){
+           $this->title_lists = array(
+                 "id" => "ID",
+                 "userid" => "服务端ID",
+                 "itemid"=>"物品ID",
+                 "itemsum" => "物品数量",
+                 "address" => "地址",
+                 "phone" => "电话",
+                 "name" => "姓名",
+                 "shoptime" => "兑换时间",
+                 "medalnum" => "红包",
+                 "nowmedalnum" => "剩余红包",
+                 "identity"=>"身份证号",
+                 "ischeck" => "审核(0审核中1已发货)",
+                );
+
+       if(IS_POST){
+           $userid = $_POST["userid"];
+           $db_config = get_db_config();
+
+            $fields = "`id`,
+                      `userid`,
+                      `itemid`,
+                      `itemsum`,
+                      `address`,
+                      `phone`,
+                      `name`,
+                      `shoptime`,
+                      `medalnum`,
+                      `nowmedalnum`,
+                      `identity`,
+                      `ischeck`
+                       ";// where  UserID= {$userid}";
+           if(!empty($userid)){
+               $map["UserID"] = $userid;//$sql .= " where  UserID= {$userid}";
+           }
+          $IsCheck = $_POST["IsCheck"];
+          if(isset($IsCheck)){
+               $map["IsCheck"] = $IsCheck;//$sql .= " where  UserID= {$userid}";
+           }
+           // $map["IsCheck"] = 0;
+           $res =  M("fishentityitem",null,$db_config)->field($fields)->where($map)->select();
+           //dump(M("fishentityitem",null,$db_config)->GetLastSql());
+           //dump(M("fishentityitem",null,$db_config)->GetLastSql());
+           $this->list_data = $res;
+        }
+         $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
+        //$this->gameid = $_SESSION['user']['gameid'];
+        $this->display('GmTool:handleentity');
+    }
+
+    public function handleentity_shen(){
+           $this->title_lists = array(
+                 "id" => "ID",
+                 "userid" => "服务端ID",
+                 "itemid"=>"物品ID",
+                 "itemsum" => "物品数量",
+                 "address" => "地址",
+                 "phone" => "电话",
+                 "name" => "姓名",
+                 "shoptime" => "兑换时间",
+                 "medalnum" => "红包",
+                 "nowmedalnum" => "剩余红包",
+                 "identity"=>"身份证号",
+                 "ischeck" => "审核(0审核中1已审核)",
+                );
+
+          $id = $_GET["id"];
+           $userid = $_GET["userid"];
+           $db_config = get_db_config();
+           $sql = "update fishentityitem set IsCheck = 1 where ID = {$id}";
+           $res =  M("fishentityitem",null,$db_config)->execute($sql);
+
+            $sql = "select
+                      `id`,
+                      `userid`,
+                      `itemid`,
+                      `itemsum`,
+                      `address`,
+                      `phone`,
+                      `name`,
+
+                      `medalnum`,
+                      `nowmedalnum`,
+                      `identity`,
+                      `shoptime`,
+                      `ischeck`
+                      from fishentityitem ";// where  UserID= {$userid}";
+            if(!empty($userid)){
+               $sql .= " where  UserID= {$userid}";
+           }
+           $res =  M("fishentityitem",null,$db_config)->query($sql);
+                      $this->list_data = $res;
+        $this->curuser = $userid;
+        $this->display('GmTool:handleentity');
+    }
+
+
+    public function handleentity_fa(){
         if(IS_POST){
             $RewardID=I('post.RewardID');
             $Context = I('post.Context');
@@ -953,10 +1054,170 @@ AddRewardID   ";
             }
         }
         else{
-            $this->display('GmTool:handleentity');
+           $id = $_GET["id"];
+           $userid = $_GET["userid"];
+           $this->id = $id;
+           $this->userid = $userid;
+           $this->display('GmTool:handleentity_fa');
         }
     }
 
+          public function userentity(){
+
+           $this->title_lists = array(
+  "userid"              =>"服务端ID",
+  "name"                =>"姓名",
+  "phone"               =>"手机",
+  "email"               =>"邮箱",
+  "identityid"          =>"身份证",
+  "entityitemusename"   =>"认证名",
+  "entityitemusephone"  =>"认证手机",
+  "entityitemuseaddress"=>"认证地址",
+  "emailcode"           =>"emailCode",
+  "entityitemstates"    =>"states",
+  "entityitemcity"      =>"city",
+  "gender"              =>"性别"
+                );
+
+       if(IS_POST){
+           $userid = $_POST["userid"];
+           $db_config = get_db_config();
+
+            $fields = "
+ `UserID`              ,
+  `Name`                ,
+  `Phone`               ,
+  `Email`               ,
+  `IdentityID`          ,
+  `EntityItemUseName`   ,
+  `EntityItemUsePhone`  ,
+  `EntityItemUseAddress`,
+  `EmailCode`           ,
+  `EntityItemStates`    ,
+  `EntityItemCity`      ,
+  `Gender`
+                       ";
+           if(!empty($userid)){
+               $map["UserID"] = $userid;
+           }
+
+           $res =  M("fishuserentity",null,$db_config)->field($fields)->where($map)->select();
+             //      dump(M("fishuserentity",null,$db_config)->GetLastSql());
+           //dump(M("fishentityitem",null,$db_config)->GetLastSql());
+           //dump($res);
+           $this->list_data = $res;
+        }
+         $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
+        //$this->gameid = $_SESSION['user']['gameid'];
+        $this->display('GmTool:userentity');
+    }
+
+        public function setuserentity(){
+
+        // $id = $_GET["id"];
+         $userid = $_GET["userid"];
+         $db_config = get_db_config();
+
+  $data["Name"] =  "8888";
+  $data["Phone"] = "18888888888";
+  $data["Email"] = "123@123.com";
+  $data["IdentityID"] = "388888888888888888";
+  $data["EntityItemUseName"] =  "8888";
+  $data["EntityItemUsePhone"] = "18888888888";
+  $data["EntityItemUseAddress"] = "18888888888";
+  $data["EmailCode"] = "1";
+  $data["EntityItemStates"] = "1";
+  $data["EntityItemCity"] = "1";
+         $res =  M("fishuserentity",null,$db_config)->where("userid={$userid}")->save($data);
+         //dump(M("fishuserentity",null,$db_config)->GetLastSql());
+         //dump(M("fishuserentity",null,$db_config)->GetLastSql());
+         //dump(M("fishuserentity",null,$db_config)->GetLastSql());
+        //$this->curuser = $userid;
+        $this->userentity();
+    }
+      public function shopnormalitem(){
+           $this->title_lists = array(
+                 "id" => "ID",
+                 "userid" => "服务端ID",
+                 "itemid"=>"物品ID",
+                 "itemsum" => "物品数量",
+                 //"address" => "地址",
+                 //"phone" => "电话",
+                 //"name" => "姓名",
+                 "shoptime" => "兑换时间",
+                 "medalnum" => "红包",
+                 "nowmedalnum" => "剩余红包",
+                // "identity"=>"身份证号",
+                // "ischeck" => "审核(0审核中1已发货)",
+                );
+
+       if(IS_POST){
+           $userid = $_POST["userid"];
+           $db_config = get_db_config();
+
+            $fields = "`id`,
+                      `userid`,
+                      `itemid`,
+                      `itemsum`,
+
+                      `medalnum`,
+                      `nowmedalnum`,
+                      `shoptime`,
+                      `ischeck`
+                       ";// where  UserID= {$userid}";
+           if(!empty($userid)){
+               $map["UserID"] = $userid;//$sql .= " where  UserID= {$userid}";
+           }
+          //$IsCheck = $_POST["IsCheck"];
+          //if(isset($IsCheck)){
+          //     $map["IsCheck"] = $IsCheck;//$sql .= " where  UserID= {$userid}";
+          // }
+           // $map["IsCheck"] = 0;
+           $res =  M("fishshopnormalitem",null,$db_config)->field($fields)->where($map)->select();
+           //dump(M("fishentityitem",null,$db_config)->GetLastSql());
+           //dump(M("fishentityitem",null,$db_config)->GetLastSql());
+           $this->list_data = $res;
+        }
+         $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
+        //$this->gameid = $_SESSION['user']['gameid'];
+        $this->display('GmTool:shopnormalitem');
+    }
+
+    public function addaccount(){
+           $this->title_lists = array(
+                 "date" => "日期",
+                 "count" => "新增人数",
+                );
+
+       if(IS_POST){
+           $startdate = $_POST["starttime"];
+           if(empty($startdate)){
+                $startdate=date("Y-m-d");
+            }
+           $enddate = $_POST["endtime"];
+                      if(empty($enddate)){
+                $enddate=date("Y-m-d");
+            }
+           $userid = $_POST["userid"];
+           $db_config = get_db_config();
+
+
+
+           $sql  = "select date(RsgLogTime) as date,count(UserID) as count  from accountinfo where date(RsgLogTime) >= '{$startdate}' and date(RsgLogTime) <= '{$enddate}'  group by date(RsgLogTime)";
+
+           $res =  M("accountinfo",null,$db_config)->query($sql);
+          // dump(M("accountinfo",null,$db_config)->GetLastSql());
+          // dump(M("accountinfo",null,$db_config)->GetLastSql());
+           $this->list_data = $res;
+        }
+        $this->display('GmTool:online');
+    }
 
         public function relevel(){
         if(IS_POST){
@@ -1031,7 +1292,7 @@ AddRewardID   ";
 
             $old_value_array = $fileContent;//json_decode($json_str, true);
 
-                 $fileContent = 
+                 $fileContent =
 array(
     0   =>0         ,
     1   =>500       ,
@@ -1123,9 +1384,9 @@ array(
             //dump($value);
                     $oldlevel = $key;
                     $oldexp = $value;
-            
+
                    if($oldlevel >= $Level){
-                       break;    
+                       break;
                     }
                     $AllExp += $oldexp;
                     //dump($AllExp);
@@ -1139,14 +1400,14 @@ array(
             //dump($value);
                     $newlevel = $key;
                     $newexp = $value;
-            
+
                    if($AllExp < $newexp){
                    $AllLevel = $newlevel;
-                       break;    
+                       break;
                     }
                     $AllExp -= $newexp;
-                    
-                    
+
+
                 }
                 //dump($AllLevel);
                 //dump($AllExp);
