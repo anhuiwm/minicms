@@ -1090,4 +1090,38 @@ function get_current_userid(){
     return session("userid");
 }
 
+
+function get_charge_range_names(){
+	$ranges= C('CHARGE_RANGE');
+    $range_names = array();
+    if( isset( $ranges )){
+        foreach($ranges as $key=>$value ){
+            $range_names[$key] = "[".$value["money"]."元]".$value["name"];
+        }
+    }
+    return $range_names;
+}
+
+function get_charge_range_money($id){
+    $ranges= C('CHARGE_RANGE');
+    return $ranges[$id]["money"];
+}
+
+function get_platform_range_names(){
+	$ranges= C('CHANNEL');
+    $range_names = array();
+    if( isset( $ranges )){
+        foreach($ranges as $key=>$value ){
+            $range_names[$key] = $value["nick"];
+        }
+    }
+    return $range_names;
+}
+
+function get_platform_range_value($id){
+    $ranges= C('CHANNEL');
+    //dump($ranges[$id]);
+    return $ranges[$id]["name"];
+}
+
 ?>

@@ -30,17 +30,27 @@ return array(
 	'SESSION_AUTO_START' => true,
 
 	'LOAD_EXT_CONFIG' => 'db,data', //配置列表 各类数据 文件
+    'CHANNEL'=>  array(
+    "1"=>array("nick"=>"全部" ,"name"=>""),
+    "2"=>array("nick"=>"非GM" ,"name"=>"gm"),
+    "gm"        =>array("nick"=>"GM" ,"name"=>"gm"),
+     "agent"        =>array("nick"=>"代理" ,"name"=>"agent"),
+     "appstore"        =>array("nick"=>"苹果" ,"name"=>"ios"),
+    "D74620B09C2CD765"=>array("nick"=>"腾讯" ,"name"=>"yyb"),
+    //"F64D801F9C555C7C"=>array("nick"=>"腾讯" ,"name"=>"yybm"),
+    "DD72FEA8BCEE13F4"=>array("nick"=>"小米" ,"name"=>"xiaomi"),
+	"F52F35C5A04A1876"=>array("nick"=>"阿里" ,"name"=>"uc"),
+	"B4447B49BC295EFE"=>array("nick"=>"阿里" ,"name"=>"wdj"),
+	"C826E32D4F9C1C68"=>array("nick"=>"华为" ,"name"=>"huawei"),
+	"A15DC579667D6DA6"=>array("nick"=>"百度" ,"name"=>"baidu"),
+	"5EFCB428547E62B1"=>array("nick"=>"VO"   ,"name"=>"vivo"),
+	"164B940D82A0EC42"=>array("nick"=>"OP"   ,"name"=>"oppo"),
+	"E7FDED8015C8FD56"=>array("nick"=>"奇虎" ,"name"=>"360"),
+    "8DD43FECE77A64DE"=>array("nick"=>"魅族" ,"name"=>"meizu"),
 
+
+  ),
         'DBS' =>array(
-         '10.0.0.99'=>array(
-            'DB_TYPE'=>'mysql',
-            'DB_HOST'=>'10.0.0.99',
-            'DB_NAME'=>'fishgame',
-            'DB_USER'=>'root',
-            'DB_PWD'=>'root',
-            'DB_PORT'=>'3306',
-            'url'=> "http://10.0.0.99:2680/gm_command_cl.clkj",
-            ),
 		'10.0.0.88'=>array(
             'DB_TYPE'=>'mysql',
             'DB_HOST'=>'10.0.0.99',

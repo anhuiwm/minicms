@@ -512,17 +512,17 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
     public function chargelog(){
             if(IS_POST){
         $db_config = get_logdb_config();
-        $sql = " select
-OrderStates   ,
-UserID        ,
-Price         ,
-orderid       ,
-ShopItemID    ,
-ChannelCode   ,
-LogTime       ,
-AddRewardID
-from fishrechargelog
-";
+//        $sql = " select
+//OrderStates   ,
+//UserID        ,
+//Price         ,
+//orderid       ,
+//ShopItemID    ,
+//ChannelCode   ,
+//LogTime       ,
+//AddRewardID
+//from fishrechargelog
+//";
 
         $fieilds = " OrderStates   ,
 UserID        ,
@@ -555,11 +555,22 @@ AddRewardID   ";
            $userid = $_POST["userid"];
            $starttime = &$_POST["starttime"];
            $endtime = $_POST["endtime"];
-        $map = array();
+           $rangeid = $_POST["range_id"];
+           $rangevalue = get_platform_range_value($rangeid);
+
+           $map = array();
            if(!empty($userid)){
                 $map['UserID'] = array('eq',$userid);
-                //$map["UserID"] = $userid;//$sql = $sql." where "."UserID='".$userid;
                 }
+            if($rangeid =="1"){//全部
+            }
+            elseif($rangeid == "2")//非GM
+            {
+              $map['channelLabel'] = array('neq',$rangevalue);;
+            }
+            elseif(!empty($rangeid) && !empty($rangevalue)){
+            $map['channelLabel'] = array(array('eq',$rangeid),array('eq',$rangevalue), 'or') ;
+            }
            if(!empty($starttime) && !empty($endtime)){
               $map['LogTime'] = array('between',"{$starttime},{$endtime}");
            }
@@ -571,17 +582,21 @@ AddRewardID   ";
                     $map['LogTime'] = array('lt',$endtime);
                     }
             }
-               // dump($map);
-              // $this->list_data= M("fishrechargelog",null,$db_config)->query($sql);
+
              $this->list_data= M("fishrechargelog",null,$db_config)->field($fields)->where($map)->select();
-
-             //dump(M("fishrechargelog",null,$db_config)->getLastSql());
-             //dump(M("fishrechargelog",null,$db_config)->getLastSql());
-             //dump(M("fishrechargelog",null,$db_config)->getLastSql());
-             //dump(M("fishrechargelog",null,$db_config)->getLastSql());
-             //dump($this->list_data);
+             $total = 0;
+             foreach($this->list_data as $key => $value){
+             //dump($value["price"]);
+                $total += $value["price"]/100;
+                //dump($total);
+             }
+             //dump($total);
+             //dump($total);
+             //dump($total);
+             //dump( M("fishrechargelog",null,$db_config)->GetLastSql());
+             $this->total = $total;
         }
-
+        $this->ranges = get_platform_range_names();
         $this->display('GmTool:chargelog');
     }
 

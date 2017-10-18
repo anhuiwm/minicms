@@ -6,11 +6,18 @@
             <input type="text" class="form-control" placeholder="UserID" name="userid">
             <input type="text" class="form-control" name="starttime" id="countTimestart" onfocus="selecttime(1)" placeholder="开始日期" class="input" readonly>
             <input type="text" class="form-control" name="endtime" id="countTimeend" onfocus="selecttime(2)" placeholder="结束日期" class="input" readonly>
+            <select class="form-control input-sm" name="range_id">
+                <foreach name="ranges" item="row" key='key'>
+                    <option value="{$key}">{$row}</option>
+                </foreach>
+            </select>
+
+
             <button class="btn btn-info btn-sm ">查询</button>
         </form>
     </div>
     <br />
-
+总计::{$total}
  <table class="table  datalist  table-hover">
   <thead>
     <tr>
