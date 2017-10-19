@@ -41,7 +41,9 @@ class GmToolController extends Controller {
 
     public static $GT_SetBlack = 7;
     public static $GT_UnSetBlack = 8;
-        public static $GT_Silent = 7;
+    public static $GT_Agent_Charge = 9;
+    public static $GT_Clear_States = 10;
+
     public function _initialize(){
         header("Content-Type:text/html; charset=utf-8");
         // 用户登录权限认证

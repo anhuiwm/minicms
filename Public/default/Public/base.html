@@ -1,129 +1,44 @@
 ﻿<html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <block name="seo"></block>
-
-    <title>321捕鱼后台管理中心:
+    <title>
+        321捕鱼后台管理中心:
         <block name="title"></block>
     </title>
     <link href="__ROOT__/Public/boot/css/bootstrap.min.css" rel="stylesheet">
     <link href="__ROOT__/Public/{:C(DEFAULT_THEME)}/Static/css/base.css" rel="stylesheet" type="text/css" media="screen">
-
     <link href="__ROOT__/Public/{:C(DEFAULT_THEME)}/Static/css/myboot.css" rel="stylesheet" type="text/css" media="screen">
     <link rel="stylesheet" type="text/css" href="__ROOT__/Public/plug/datetimepicker/jquery.datetimepicker.css" />
     <link href="__ROOT__/Public/icon/iconfont.css" rel="stylesheet">
 
-
     <script src="__ROOT__/Public/boot/js/jquery.js"></script>
-
     <script src="__ROOT__/Public/plug/datetimepicker/build/jquery.datetimepicker.full.js"></script>
     <script src="__ROOT__/Public/plug/My97DatePicker/WdatePicker.js"></script>
-
     <script src="__ROOT__/Public/plug/datetimepicker/build/jquery.datetimepicker.full.js"></script>
     <script src="__ROOT__/Public/plug/bsdatetimepicker/build/jquery.datetimepicker.full.js"></script>
-
 
     <link href="__ROOT__/Public/plug/bsdatetimepicker/js/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <script src="__ROOT__/Public/plug/bsdatetimepicker/js/bootstrap-datetimepicker.js"></script>
     <script src="__ROOT__/Public/plug/bsdatetimepicker/js/locales/bootstrap-datetimepicker.fr.js"></script>
-
     <script>
         $.datetimepicker.setLocale('zh');
     </script>
-
-    <script type="text/javascript">
-        //时间选择
-        function selecttime(flag) {
-            if (flag == 1) {
-                var endTime = $("#countTimeend").val();
-                if (endTime != "") {
-                    WdatePicker({
-                        dateFmt: 'yyyy-MM-dd HH:mm',
-                        maxDate: endTime
-                    });
-                } else {
-                    WdatePicker({
-                        dateFmt: 'yyyy-MM-dd HH:mm'
-                    });
-                }
-            } else {
-                var startTime = $("#countTimestart").val();
-                if (startTime != "") {
-                    WdatePicker({
-                        dateFmt: 'yyyy-MM-dd HH:mm',
-                        minDate: startTime
-                    });
-                } else {
-                    WdatePicker({
-                        dateFmt: 'yyyy-MM-dd HH:mm'
-                    });
-                }
-            }
-        }
-
-
-        //时间选择
-        function selectdate(flag) {
-            if (flag == 1) {
-                var endTime = $("#enddate").val();
-                if (endTime != "") {
-                    WdatePicker({
-                        dateFmt: 'yyyy-M-d',
-                        maxDate: endTime
-                    });
-                } else {
-                    WdatePicker({
-                        dateFmt: 'yyyy-M-d'
-                    });
-                }
-            } else {
-                var startTime = $("#startdate").val();
-                if (startTime != "") {
-                    WdatePicker({
-                        dateFmt: 'yyyy-M-d',
-                        minDate: startTime
-                    });
-                } else {
-                    WdatePicker({
-                        dateFmt: 'yyyy-M-d '
-                    });
-                }
-            }
-        }
-
-        function selectonetime(flag) {
-            WdatePicker({
-                dateFmt: 'yyyy-MM-dd HH:mm'
-            });
-        }
-
-        function selectdaytime(flag) {
-            WdatePicker({
-                dateFmt: 'HH:mm:ss'
-            });
-        }
-    </script>
-
-    <?php
+    <script src="__ROOT__/Public/boot/js/wm.js"></script><?php
   if(strpos($HTTP_SERVER_VARS[HTTP_USER_AGENT], "MSIE 8.0")) {
   echo ' <link href="__ROOT__/Public/{:C(DEFAULT_THEME)}/Static/css/ie.css" rel="stylesheet" type="text/css" media="screen">';
   }
   ?>
-        <block name="css"></block>
+    <block name="css"></block>
 </head>
-
 <body>
-
-
 
     <!-- 头部功能菜单 -->
     <div class="top">
         <include file="Public@Public/header" />
     </div>
-
 
     <div class="row top50">
         <div class="col-md-2 col-sm-3 col-xs-12">
@@ -137,7 +52,6 @@
             </div>
         </div>
         <div class="col-md-10 col-sm-9 col-xs-12 sright">
-
             <div class="main">
                 <!-- 右侧标题区 [必须]-->
                 <div class="main_map">
@@ -147,15 +61,12 @@
                             <if condition="$back_url neq false">
                                 <li style="float:right"><a href="{$back_url}" class="btn btn-success btn-xs">返回上页</a></li>
                             </if>
-
                         </ol>
                     </block>
                 </div>
-
                 <div class="main_body">
                     <!-- 工具条【可选】 -->
                     <block name="tools"></block>
-
                     <!-- 主要内容区域【可选】 -->
                     <block name="main_content">
                         这里是主要区域
@@ -166,20 +77,16 @@
         </div>
     </div>
 
-
-
     <block name="footer">
         <block name="footer">
             <include file="Public@Public/footer" />
         </block>
     </block>
 
-
     <block name="script"></block>
     <if condition="$_SESSION['act_info'] neq false">
         <div class="alt_msg">
-            <div class="show_msg">
-                <?php
+            <div class="show_msg"><?php
           echo $_SESSION['act_info'];
           unset($_SESSION['act_info']);
         ?>
@@ -195,5 +102,4 @@
         </script>
     </if>
 </body>
-
 </html>

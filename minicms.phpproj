@@ -685,6 +685,7 @@
     <Content Include="Public\default\GmTool\handleentity.html" />
     <Content Include="Public\default\GmTool\item.html" />
     <Content Include="Public\default\GmTool\itemlog.html" />
+    <Content Include="Public\default\GmTool\states.html" />
     <Content Include="Public\default\GmTool\kick.html" />
     <Content Include="Public\default\GmTool\mail.html" />
     <Content Include="Public\default\GmTool\online.html" />
@@ -708,7 +709,6 @@
     <Content Include="Public\default\Public\sec_menu.html" />
     <Content Include="Public\default\Public\tools.html" />
     <Content Include="Public\default\Public\upload.html" />
-    <Content Include="Public\default\Public\▓р└╕url╔ш╝╞" />
     <Content Include="Public\default\Site\adv_lists.html" />
     <Content Include="Public\default\Site\manage_content.html" />
     <Content Include="Public\default\Site\self_lists.html" />
@@ -754,6 +754,7 @@
     <Content Include="Public\default\Static\js\jquery.sparkline.js" />
     <Content Include="Public\default\Static\js\my.js" />
     <Content Include="Public\default\Static\js\sparkline-chart.js" />
+    <Content Include="Public\default\System\index-copy.html" />
     <Content Include="Public\default\System\index.html" />
     <Content Include="Public\default\System\lists.html" />
     <Content Include="Public\default\System\lists_field_group.html" />

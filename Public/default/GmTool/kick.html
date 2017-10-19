@@ -1,9 +1,20 @@
 ﻿<extend name="Public@Public/base" />
 <block name="main_content">
     <form method="post" action="{:U('GmTool/Command/kick')}">
+        <input type="text" class="form-control"  placeholder="ip" name="ip">或
         <input type="text" class="form-control" value="{$curuser}" placeholder="DestUserID" name="DestUserID">
+        <br />
         <input type="text" class="form-control" placeholder="分钟数" name="RewardNum">
         <br />
-        <button class="btn btn-success <!--btn-block-->">提交</button>
+        <button class="btn btn-success <!--btn-block-->">封停</button>
+    </form>
+
+    <form method="post" action="{:U('GmTool/Command/unkick')}">
+        <input type="text" class="form-control" placeholder="ip" name="ip">或
+        <input type="text" class="form-control" value="{$curuser}" placeholder="DestUserID" name="DestUserID">
+        <br />
+        <!--<input type="text" class="form-control" placeholder="分钟数" name="RewardNum">-->
+        <br />
+        <button class="btn btn-success <!--btn-block-->">解封</button>
     </form>
 </block>

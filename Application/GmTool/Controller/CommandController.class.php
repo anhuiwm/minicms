@@ -258,19 +258,21 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
                 foreach($arr_name as $key=>$value){
                // dump($key);dump($value);
                     $tempres = $res[0][$key];
-                   // dump($tempres);
+                   //dump($tempres);
                     if(isset($tempres)){
 
-                        if($key=="lastlogonip"){
+                        if($key=="lastlogonip")
+                       {
+                        //dump($tempres);
                         //dump($tempres);
                         //$net = $this->reversebytes_uint32t($tempres);
                         //$netip = sprintf('%u',$net);
                         $ip = long2ip($tempres);
-                        //dump($ip);
+                       // dump($ip);
                         //$ip = "106.15.198.179";//
                         $ip = $this->hostip2netip($ip);
                         //dump($netip);
-                        //dump($ip);
+                       // dump($ip);
                         $ipInfos = $this->GetIpLookup($ip);
                             $tempres .="=>".$ip."=>".$ipInfos;
                         }
@@ -529,6 +531,7 @@ UserID        ,
 Price         ,
 orderid       ,
 ShopItemID    ,
+ChannelLabel   ,
 ChannelCode   ,
 LogTime       ,
 AddRewardID   ";
@@ -545,6 +548,7 @@ AddRewardID   ";
 //"channelorderid",
 //"channellabel",
 "shopitemid",
+"channellabel",
 "channelcode",
 //"addglobelsum",
 //"addcurrceysum",
@@ -773,23 +777,47 @@ AddRewardID   ";
         if(IS_POST){
             $RewardNum=I('post.RewardNum');
             $DestUserID = I('post.DestUserID');
-            //$Context = I('post.Context');
-            if(empty($RewardNum)||empty($DestUserID))
+            $IP = I('post.ip');
+            $arrID=array();
+            if(empty($RewardNum))
             {
-                $this->redirect('GmTool:kick','',3, '亲，参数为空!!!');
+                $this->redirect('GmTool:kick','',3, '亲，分钟参数为空!!!');
             }
-            //if(empty($Context))
-            //{
-            //    $Context = "System Send!";
-            //}
+            if(!empty($IP))//id
+            {
+                $db_config = get_db_config();
+                $map['RsgIP'] = $IP;
+                $res =  M("accountinfo",null,$db_config)->field("UserID")->where($map)->select();
+                foreach($res as $key => $value)
+                {
+                    array_push($arrID,$value['userid']);
+                }
+                //dump($res);
+                //$data['target']=$DestUserID;
+            }
+            elseif(!empty($DestUserID))//id
+            {
+                $data['id']=0;
+                array_push($arrID,$DestUserID);//$data['target']=$DestUserID;
+            }
+            else
+            {
+                 $this->redirect('GmTool:kick','',3, '亲，IP和UserID参数为空!!!');
+            }
             $arr_db_url = get_db_config_url();
-            $data['type']= self::$GT_Kick;
-            $data['id']=0;
-            $data['num']=$RewardNum;
-            $data['content']=0;
-            $data['target']=$DestUserID;
-            $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
-            file_put_contents('wmgmlog.txt', "httpstr:".$httpstr.PHP_EOL, FILE_APPEND);
+
+            foreach($arrID as $key => $value)
+            {
+               // dump($value);
+                $data['type']= self::$GT_Kick;
+                $data['num']=$RewardNum;
+                $data['content']=0;
+                $data['id']=0;
+                $data['target']=$value;
+                $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
+            }
+
+            //file_put_contents('wmgmlog.txt', "httpstr:".$httpstr.PHP_EOL, FILE_APPEND);
             if($httpstr == "SUCCESS")
             {
                 $this->redirect('GmTool:kick','',3, '亲，发送命令成功!稍后请查询!!');
@@ -805,6 +833,102 @@ AddRewardID   ";
                 $this->curuser = $curuserid;
             }
             $this->display('GmTool:kick');
+        }
+    }
+
+
+        public function unkick(){
+        if(IS_POST){
+            //$RewardNum=I('post.RewardNum');
+            $DestUserID = I('post.DestUserID');
+            $IP = I('post.ip');
+            $arrID=array();
+
+            $db_config = get_db_config();
+            if(!empty($IP))//id
+            {
+                $map['RsgIP'] = $IP;
+                $res =  M("accountinfo",null,$db_config)->field("UserID")->where($map)->select();
+                foreach($res as $key => $value)
+                {
+                    array_push($arrID,$value['userid']);
+                }
+                //dump($res);
+                //$data['target']=$DestUserID;
+            }
+            elseif(!empty($DestUserID))//id
+            {
+                array_push($arrID,$DestUserID);//$data['target']=$DestUserID;
+            }
+            else
+            {
+                 $this->redirect('GmTool:kick','',3, '亲，IP和UserID参数为空!!!');
+            }
+
+            foreach($arrID as $key => $value)
+            {
+            dump($value);
+                //$map['UserID'] = $value;
+                //$data['IsFreeze'] = 0;
+                $sql = "UPDATE `accountinfo` SET `IsFreeze`=0 WHERE `UserID` = 20268";
+                $res =  M("accountinfo",null,$db_config)->execute($sql);
+                //dump(M("accountinfo",null,$db_config)->GetLastSql());
+                //dump($res);
+                if($res)
+                {
+                    $this->redirect('GmTool:kick','',3, '亲，解封成功!!');
+                }
+                else
+                {
+                    $this->redirect('GmTool:kick','',3, '亲，解封失败!!!');
+                }
+            }
+
+            //file_put_contents('wmgmlog.txt', "httpstr:".$httpstr.PHP_EOL, FILE_APPEND);
+
+        }
+        else{
+            $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
+            $this->display('GmTool:kick');
+        }
+    }
+
+
+    public function states(){
+        if(IS_POST){
+            $typeid=I('post.typeid');
+            $DestUserID = I('post.DestUserID');
+            if(empty($DestUserID))
+            {
+                $this->redirect('GmTool:states','',3, '亲，参数为空!!!');
+            }
+
+            $arr_db_url = get_db_config_url();
+            $data['type']= self::$GT_Clear_States;
+            $data['id']=0;
+            $data['num']=1;
+            $data['content']=$typeid;
+            $data['target']=$DestUserID;
+            $httpstr = $this->http($arr_db_url, $data, 'GET', array("Content-type: text/html; charset=utf-8"));
+            file_put_contents('wmgmlog.txt', "httpstr:".$httpstr.PHP_EOL, FILE_APPEND);
+            if($httpstr == "SUCCESS")
+            {
+                $this->redirect('GmTool:states','',3, '亲，发送命令成功!稍后请查询!!');
+            }
+            else
+            {
+                $this->redirect('GmTool:states','',3, '亲，发送失败!!!');
+            }
+        }
+        else{
+            $curuserid = get_current_userid();
+            if(isset($curuserid)){
+                $this->curuser = $curuserid;
+            }
+            $this->display('GmTool:states');
         }
     }
 
