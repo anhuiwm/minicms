@@ -238,7 +238,8 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
                  "isrobot"=>"机器人",
                  "freezeendtime"=>"冻结时间",
                  "rsgip"=>"注册IP",
-                 "GameTime"=>"GameTime","titleid"=>"titleid",
+                 "GameTime"=>"GameTime",
+"titleid"=>"titleid",
 "onlinesec"=>"onlinesec",
 "goldbulletnum"=>"goldbulletnum",
 "nobilitypoint"=>"nobilitypoint",
@@ -300,24 +301,24 @@ a.GameTime,a.TitleID,a.OnlineSec,a.GoldBulletNum,a.NobilityPoint,a.AddupCheckNum
 
    public function stock(){
            $db_config = get_logdb_config();
-           $res =  M("fishstocklog",null,$db_config)->query("select `ServerID` , `TableType`,  `StockScore`,(StockScore-100000000+TaxScore) as Income,  `TaxScore`,  `LogTime` from fishstocklog");
+           $res =  M("fishstocklog",null,$db_config)->query("select `ServerID` , `TableType`,  `StockScore`,`TaxScore`,(StockScore-100000000+TaxScore) as Income, `LogTime` from fishstocklog order by LogTime desc,TableType asc limit 100");
            if($res){
-               $arr_score = array();
-               foreach($res as $key=>$value){
-               if($value["stockscore"] != 0){
-                      $arr_score[$value["tabletype"]]["type"] = $value["tabletype"];
-                      $arr_score[$value["tabletype"]]["stock"] += $value["stockscore"];
-                      $arr_score[$value["tabletype"]]["tax"] += $value["taxscore"];
-                   }
-                   else{
-                        unset($res[$key]);
-                    }
-                }
-
-                $this->detail_title_lists=array("服务器ID","房间类型","实时库存","净收入","税收","LogTime");
-                $this->title_lists = array("房间类型","房间类型总库存","房间类型总税收");
+            //    $arr_score = array();
+             //   foreach($res as $key=>$value){
+             //   if($value["stockscore"] != 0){
+            //           $arr_score[$value["tabletype"]]["type"] = $value["tabletype"];
+            //           $arr_score[$value["tabletype"]]["stock"] += $value["stockscore"];
+            //           $arr_score[$value["tabletype"]]["tax"] += $value["taxscore"];
+            //        }
+             //       else{
+             //            unset($res[$key]);
+             //        }
+             //    }
+//
+                $this->detail_title_lists=array("服务器ID","房间类型","实时库存","税收","净收入[库存+税收-1亿]","LogTime");
+                //$this->title_lists = array("房间类型","房间类型总库存","房间类型总税收");
                 $this->detail_list_data = $res;
-                $this->list_data = $arr_score;
+                //$this->list_data = $arr_score;
            }
        $this->display("GmTool:stock");
     }
