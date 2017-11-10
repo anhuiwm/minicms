@@ -53,7 +53,7 @@ return array(
         'DBS' =>array(
 		'10.0.0.88'=>array(
             'DB_TYPE'=>'mysql',
-            'DB_HOST'=>'10.0.0.168',
+            'DB_HOST'=>'10.0.0.99',
             'DB_NAME'=>'fishgame',
             'DB_USER'=>'root',
             'DB_PWD'=>'root',
@@ -63,7 +63,7 @@ return array(
 
         '10.0.0.123'=>array(
             'DB_TYPE'=>'mysql',
-            'DB_HOST'=>'10.0.0.168',
+            'DB_HOST'=>'10.0.0.99',
             'DB_NAME'=>'fishgame',
             'DB_USER'=>'root',
             'DB_PWD'=>'root',

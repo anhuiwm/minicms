@@ -563,6 +563,14 @@ AddRewardID   ";
            $rangeid = $_POST["range_id"];
            $rangevalue = get_platform_range_value($rangeid);
 
+                      if(empty($starttime)){
+                $starttime=date("Y-m-d");
+            }
+
+            //if(empty($endtime)){
+            //    $endtime=date("Y-m-d H:i:s");
+            //}
+
            $map = array();
            if(!empty($userid)){
                 $map['UserID'] = array('eq',$userid);
@@ -1327,6 +1335,61 @@ AddRewardID   ";
             }
         //$this->gameid = $_SESSION['user']['gameid'];
         $this->display('GmTool:shopnormalitem');
+    }
+
+     public function feedback(){
+        $curuserid = get_current_userid();
+        if(isset($curuserid)){
+           // $this->curuser = $curuserid;
+        }
+        $this->title_lists = array(
+                        "srcuserid",
+                        "messageinfo",
+                        "logtime",
+                        );
+
+        if(IS_POST)
+        {
+                    $userid = $_POST["userid"];
+                    $startdate = $_POST["starttime"];
+                    $enddate = $_POST["endtime"];
+                   if(empty($startdate)){
+                        $startdate=date("Y-m-d");
+                    }
+                   $enddate = $_POST["endtime"];
+                    if(empty($enddate)){
+                        $enddate=date("Y-m-d H:i:s");
+                    }
+
+                   $userid = $_POST["userid"];
+                   $db_config = get_db_config();
+
+                    $db_config = get_db_config();
+                    $map = array();
+
+                    if(!empty($userid)){
+                          $map['SrcUserID'] = array('eq',$userid);
+                    }
+                     if(!empty($starttime)){
+                    $map['LogTime'] = array('gt',$starttime);
+                    }
+                   if(!empty($endtime)){
+                        $map['LogTime'] = array('lt',$endtime);
+                        }
+
+                    $arr_res = array();
+                        try{
+                           $res= M("fishfeedbackinfo",null,$db_config)->field($this->title_lists)->where($map)->select();
+                        }catch(\Exception $e){
+                            $res = array("code" => "error", "message" => "数据库错误");
+                        }
+                        if(isset($res))
+                        {
+                           $arr_res = array_merge($arr_res,$res);
+                        }
+                    $this->list_data = $arr_res;
+       }
+       $this->display('GmTool:feedback');
     }
 
     public function addaccount(){
