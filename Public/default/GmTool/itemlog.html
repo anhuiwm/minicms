@@ -11,6 +11,7 @@
                 <option value="1 ">[点券    ][Cashpoint]</option>
                 <option value="12">[钻石    ][Currcey  ]</option>
                 <option value="13">[金币    ][GOLD     ]</option>
+                <option value="14">[渔乐币  ][FISHCOIN ]</option>
                 <option value="2 ">[奖牌    ][Medal    ]</option>
                 <option value="3 ">[奖励    ][Reward   ]</option>
                 <option value="4 ">[牛牛    ][NiuNiu   ]</option>
@@ -19,53 +20,54 @@
                 <option value="7 ">[技能    ][Skill    ]</option>
                 <option value="8 ">[森林舞会][Dial     ]</option>
                 <option value="9 ">[奔驰宝马][Car      ]</option>
+                <option value="9 ">[奔驰宝马][Car      ]</option>
             </select>
-            <input type="text" class="form-control"  placeholder="(type为物品时为itemid)" name="typesum">
-            <input type="text" class="form-control" name="starttime"  onfocus="selectdate(1)" placeholder="开始日期" class="input" readonly>
-            <input type="text" class="form-control" name="endtime"  onfocus="selectdate(2)" placeholder="结束日期" class="input" readonly>
+            <input type="text" class="form-control" placeholder="(type为物品时为itemid)" name="typesum">
+            <input type="text" class="form-control" name="starttime" onfocus="selectdate(1)" placeholder="开始日期" class="input" readonly>
+            <input type="text" class="form-control" name="endtime" onfocus="selectdate(2)" placeholder="结束日期" class="input" readonly>
             <button class="btn btn-info btn-sm ">查询</button>
         </form>
     </div>
 
     个人物品记录:
- <table class="table  datalist  table-hover">
-  <thead>
-    <tr>
-      <foreach name="title_lists" item="row">
-        <th>
-          {$row}
-        </th>
-      </foreach>
-      <th class="tright pad-r21" scope="row">
-          <div class="btn-group">
-          </div>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <foreach name="list_data" item="row" key='key'>
-    <tr>
-      <foreach name="title_lists" item="row1" key='key1'>
-        <td>
-         {$row[$row1]}
-        </td>
-      </foreach>
-    </tr>
-    </foreach>
-  </tbody>
-    <thead>
-        <tr>
-            <foreach name="title_lists" item="row">
-                <th>
-                    {$row}
+    <table class="table  datalist  table-hover">
+        <thead>
+            <tr>
+                <foreach name="title_lists" item="row">
+                    <th>
+                        {$row}
+                    </th>
+                </foreach>
+                <th class="tright pad-r21" scope="row">
+                    <div class="btn-group">
+                    </div>
                 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <foreach name="list_data" item="row" key='key'>
+                <tr>
+                    <foreach name="title_lists" item="row1" key='key1'>
+                        <td>
+                            {$row[$row1]}
+                        </td>
+                    </foreach>
+                </tr>
             </foreach>
-            <th class="tright pad-r21" scope="row">
-                <div class="btn-group">
-                </div>
-            </th>
-        </tr>
-    </thead>
-  </table>
+        </tbody>
+        <thead>
+            <tr>
+                <foreach name="title_lists" item="row">
+                    <th>
+                        {$row}
+                    </th>
+                </foreach>
+                <th class="tright pad-r21" scope="row">
+                    <div class="btn-group">
+                    </div>
+                </th>
+            </tr>
+        </thead>
+    </table>
 
 </block>
